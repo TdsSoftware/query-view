@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Type, ViewChild } from '@angular/core';
+
 import { FilterDirective } from './filter.directive';
 import { DataViewRenderService } from '../data-view-render.service';
+import { DataViewStateService } from '../data-view-state.service';
 
 @Component({
   selector: 'tds-filter',
@@ -13,7 +15,7 @@ export class FilterComponent implements OnInit {
   @ViewChild(FilterDirective, { static: true }) filterHost: FilterDirective;
 
   constructor(
-    //private stateService: DataViewStateService,
+    private stateService: DataViewStateService,
     private renderService: DataViewRenderService
   ) {}
 
@@ -22,6 +24,6 @@ export class FilterComponent implements OnInit {
   }
 
   closeFilter() {
-    //this.stateService.closeFilter();
+    this.stateService.closeFilter();
   }
 }
