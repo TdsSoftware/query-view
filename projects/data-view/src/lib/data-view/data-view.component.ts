@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Type } from '@angular/core';
 })
 export class DataViewComponent implements OnInit {
   @Input() table: Type<any>;
+  @Input() filter: Type<any>;
 
   constructor() {}
 

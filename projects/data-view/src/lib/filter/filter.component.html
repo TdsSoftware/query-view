@@ -1,0 +1,15 @@
+<div fxLayout="column" fxFlexFill>
+    <mat-toolbar>
+        <h3>Filtros</h3>
+        <div fxFlex></div>
+        <button mat-icon-button matTooltip="Fechar" (click)="closeFilter()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-divider></mat-divider>
+
+    <div id="filter-container" fxFlex>
+        <ng-template tdsFilter></ng-template>
+    </div>
+</div>
