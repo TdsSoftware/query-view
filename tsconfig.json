@@ -12,6 +12,12 @@
     },
     {
       "path": "./projects/data-view/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/demo-app/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/demo-app/tsconfig.spec.json"
     }
 ]
 }
