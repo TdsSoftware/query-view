@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <h3>Tds Data-View Library</h3>
+
+    <div fxFlex></div>
+
+    <button mat-icon-button (click)="toggleTheme()" matTooltip="Trocar tema">
+        <mat-icon>{{ (darkTheme$ | async) ? 'flash_off' : 'flash_on'}}</mat-icon>
+    </button>
+
+</mat-toolbar>

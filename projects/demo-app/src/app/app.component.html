@@ -1,1 +1,4 @@
-<app-data-view-funcionario></app-data-view-funcionario>
+<div [class.dark-theme]="darkTheme$ | async">
+    <app-toolbar></app-toolbar>
+    <app-data-view-funcionario></app-data-view-funcionario>
+</div>
