@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build && npm publish ./dist/data-view --access=public"
   },
   "private": true,
   "dependencies": {
