@@ -14,6 +14,7 @@ export class DataViewComponent implements OnInit {
   @Input() filter: Type<any>;
   @Input() margin: string;
   @Input() elevation: number = 2;
+  @Input() pageSize: number = 10;
 
   filterOpened$ = this.stateService.filterOpened$;
   loading$ = this.stateService.loading$;
@@ -27,6 +28,7 @@ export class DataViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.listenMediaChange();
+    this.stateService.changePageSize(this.pageSize);
   }
 
   ngOnDestroy() {

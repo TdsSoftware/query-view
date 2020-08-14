@@ -83,6 +83,12 @@ export class DataViewStateService {
     this.length.next(value);
   }
 
+  changePageSize(pageSize: number) {
+    this.pageSize.next(pageSize);
+    const pagination = this.params.value.pagination;
+    this.changePagination({ ...pagination, pageSize });
+  }
+
   refreshData() {
     this.refresh.next();
   }
