@@ -1,4 +1,4 @@
-@mixin app-search-theme($typography) {
+@mixin tds-search-theme($typography) {
   tds-search {
     input {
       @include mat-typography-level-to-styles($typography, title);

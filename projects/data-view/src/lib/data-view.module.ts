@@ -20,6 +20,7 @@ import { FilterDirective } from './filter/filter.directive';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchComponent } from './search/search.component';
+import { FilterButtonsComponent } from './filter-buttons/filter-buttons.component';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -42,6 +43,7 @@ export const MATERIAL_MODULES = [
     PaginatorComponent,
     ToolbarComponent,
     SearchComponent,
+    FilterButtonsComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,6 @@ export const MATERIAL_MODULES = [
     ReactiveFormsModule,
     MATERIAL_MODULES,
   ],
-  exports: [DataViewComponent],
+  exports: [DataViewComponent, FilterButtonsComponent],
 })
 export class DataViewModule {}

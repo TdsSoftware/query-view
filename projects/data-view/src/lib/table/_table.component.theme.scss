@@ -1,4 +1,4 @@
-@mixin app-table-theme($theme) {
+@mixin tds-table-theme($theme) {
   $background: map-get($theme, background);
 
   tds-table {

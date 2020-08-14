@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { DataViewModule } from 'data-view';
 import { MaterialModule } from './material.module';
+import { DataViewModule } from 'data-view';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule],
-  exports: [MaterialModule, DataViewModule],
+  exports: [MaterialModule, FlexLayoutModule, DataViewModule],
 })
 export class SharedModule {}
