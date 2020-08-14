@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "data-view": {
+      "projectType": "library",
+      "root": "projects/data-view",
+      "sourceRoot": "projects/data-view/src",
+      "prefix": "tds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/data-view/tsconfig.lib.json",
+            "project": "projects/data-view/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/data-view/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/data-view/src/test.ts",
+            "tsConfig": "projects/data-view/tsconfig.spec.json",
+            "karmaConfig": "projects/data-view/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/data-view/tsconfig.lib.json",
+              "projects/data-view/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "data-view"
 }
