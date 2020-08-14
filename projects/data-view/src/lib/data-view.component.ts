@@ -7,14 +7,10 @@ import { Component, OnInit } from '@angular/core';
       data-view works!
     </p>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class DataViewComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
