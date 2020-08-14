@@ -36,9 +36,7 @@
               "projects/data-view/tsconfig.lib.json",
               "projects/data-view/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -52,7 +50,7 @@
       },
       "root": "projects/demo-app",
       "sourceRoot": "projects/demo-app/src",
-      "prefix": "tds",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -67,9 +65,7 @@
               "projects/demo-app/src/favicon.ico",
               "projects/demo-app/src/assets"
             ],
-            "styles": [
-              "projects/demo-app/src/styles.scss"
-            ],
+            "styles": ["projects/demo-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -131,9 +127,7 @@
               "projects/demo-app/src/favicon.ico",
               "projects/demo-app/src/assets"
             ],
-            "styles": [
-              "projects/demo-app/src/styles.scss"
-            ],
+            "styles": ["projects/demo-app/src/styles.scss"],
             "scripts": []
           }
         },
@@ -145,9 +139,7 @@
               "projects/demo-app/tsconfig.spec.json",
               "projects/demo-app/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -163,6 +155,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "data-view"
 }
