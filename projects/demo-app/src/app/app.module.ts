@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { DataViewModule } from 'data-view';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FuncionariosModule } from './funcionarios/funcionarios.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, DataViewModule, BrowserAnimationsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, FuncionariosModule],
   providers: [],
   bootstrap: [AppComponent],
 })
