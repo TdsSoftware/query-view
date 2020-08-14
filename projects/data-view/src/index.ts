@@ -4,6 +4,7 @@
 
 export * from './lib/data-view/data-view.component';
 export * from './lib/filter/filter.component';
+export * from './lib/paginator/paginator.component';
 export * from './lib/table/table.component';
 
 export * from './lib/data-view';

@@ -1,3 +1,22 @@
-<tds-filter [filter]="filter"></tds-filter>
+<mat-drawer-container (backdropClick)="close()">
 
-<tds-table fxFlex [table]="table"></tds-table>
+    <mat-drawer [mode]="filterMode$ | async" [opened]="filterOpened$ | async" position="end" disableClose>
+        <tds-filter [filter]="filter"></tds-filter>
+    </mat-drawer>
+
+    <mat-drawer-content fxLayout="column" [style.padding]="margin">
+
+        <tds-toolbar [titulo]="titulo" [ngClass]="getElevation()"></tds-toolbar>
+        <mat-divider *ngIf="!margin"></mat-divider>
+
+        <div id="table-container" fxLayout="column" fxFlex [style.margin-top]="margin" [ngClass]="getElevation()">
+
+            <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
+            <tds-table fxFlex [table]="table"></tds-table>
+            <tds-paginator></tds-paginator>
+
+        </div>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Funcionario } from '../funcionarios';
 import { FuncionariosService } from '../funcionarios.service';
+import { Parametros, Ordenacao, DataViewStateService } from 'data-view';
 
 @Component({
   selector: 'app-tabela-funcionario',
@@ -16,19 +17,18 @@ export class TabelaComponent implements OnInit {
   colunas = ['id', 'nome', 'sobrenome', 'idade', 'empresa', 'email'];
 
   constructor(
-    private funcionariosService: FuncionariosService // private dataViewStateService: DataViewStateService
+    private funcionariosService: FuncionariosService,
+    private dataViewStateService: DataViewStateService
   ) {}
 
   ngOnInit() {
-    // this.data$ = this.dataViewStateService.getData((params: Parametros) =>
-    //   this.testeService.getAll(params)
-    // );
-
-    this.data$ = this.funcionariosService.getAll();
+    this.data$ = this.dataViewStateService.getData((params: Parametros) =>
+      this.funcionariosService.getAll(params)
+    );
   }
 
   sortData(sort: Sort) {
-    //this.dataViewStateService.changeSort(sort as Ordenacao);
+    this.dataViewStateService.changeSort(sort as Ordenacao);
   }
 
   setColor(idade: number) {

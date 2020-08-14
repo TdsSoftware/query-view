@@ -1,0 +1,9 @@
+<button mat-icon-button matTooltip="Pesquisar" (click)="focus()">
+    <mat-icon>search</mat-icon>
+</button>
+
+<input #input fxFlex [placeholder]="placeholder" [formControl]="pesquisa" (keydown.Escape)="clear()">
+
+<button mat-icon-button matTooltip="Cancelar" (click)="clear()" *ngIf="pesquisa.value">
+    <mat-icon>close</mat-icon>
+</button>
