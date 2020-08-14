@@ -2,6 +2,6 @@
 @import "./table.component.theme";
 
 @mixin data-view-theme($theme, $typography) {
-  @include tds-search-theme($typography);
+  @include tds-search-theme($theme, $typography);
   @include tds-table-theme($theme);
 }
