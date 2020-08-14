@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'tds-data-view',
-  template: `
-    <p>
-      data-view works!
-    </p>
-  `,
-  styles: [],
+  templateUrl: './data-view.component.html',
+  styleUrls: ['./data-view.component.scss']
 })
 export class DataViewComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
