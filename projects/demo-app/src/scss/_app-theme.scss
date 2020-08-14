@@ -1,0 +1,18 @@
+@import "./_mat-toolbar-custom-theme";
+@import "./_mat-drawer-custom-theme";
+
+@import "./app-body-theme";
+
+@import "../../../data-view/src/lib/data-view.theme.scss";
+
+@mixin app-theme($theme, $typography) {
+  /* Material */
+  @include mat-toolbar-custom-theme($theme, $typography);
+  @include mat-drawer-custom-theme($theme);
+
+  /* App */
+  @include app-body-theme($theme);
+
+  /* Tds Data View Library */
+  @include data-view-theme($theme, $typography);
+}

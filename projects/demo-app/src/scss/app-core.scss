@@ -1,0 +1,18 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+// Current Scss folder
+@import "./app-body-theme";
+@import "./app-theme";
+@import "./app-typography";
+@import "./mat-drawer-custom-theme";
+@import "./mat-toolbar-custom-theme";
+
+// Custom Themes
+@import "../themes/candy-app-theme.scss";
+@include default-app-theme();
+
+@import "../themes/dark-app-theme.scss";
+.dark-theme {
+  @include dark-app-theme();
+}

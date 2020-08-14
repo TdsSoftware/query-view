@@ -9,7 +9,7 @@ import { DataViewMediaService } from '../data-view-media.service';
   styleUrls: ['./data-view.component.scss'],
 })
 export class DataViewComponent implements OnInit {
-  @Input() titulo: string;
+  @Input() titulo: string = '';
   @Input() table: Type<any>;
   @Input() filter: Type<any>;
   @Input() margin: string;
