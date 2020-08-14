@@ -7,7 +7,8 @@
     "build": "ng build data-view --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish": "npm run build && npm publish"
   },
   "private": true,
   "dependencies": {
