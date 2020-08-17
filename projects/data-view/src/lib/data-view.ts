@@ -1,4 +1,4 @@
-export interface HttpResponse<T> {
+export interface DataViewResult<T> {
   data: T[];
   length: number;
 }

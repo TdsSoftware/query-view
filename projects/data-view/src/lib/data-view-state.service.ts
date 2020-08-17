@@ -8,7 +8,7 @@ import {
   Paginacao,
   Filtro,
   Ordenacao,
-  HttpResponse,
+  DataViewResult,
 } from './data-view';
 
 @Injectable({
@@ -36,7 +36,7 @@ export class DataViewStateService {
   constructor() {}
 
   getData<T>(
-    request: (params: Parametros) => Observable<HttpResponse<T>>
+    request: (params: Parametros) => Observable<DataViewResult<T>>
   ): Observable<T[]> {
     const stream$ = merge(this.params$, this.refresh$).pipe(
       map(() => this.params.value)

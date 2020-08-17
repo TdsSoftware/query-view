@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { Parametros, HttpResponse } from 'data-view';
+import { Parametros, DataViewResult } from 'data-view';
 
 import { Cliente } from './clientes';
 import { CLIENTES_MOCK_DATA } from './clientes-mock-data';
@@ -14,7 +14,7 @@ import { CLIENTES_MOCK_DATA } from './clientes-mock-data';
 export class ClientesService {
   constructor() {}
 
-  getAll(params?: Parametros): Observable<HttpResponse<Cliente>> {
+  getAll(params?: Parametros): Observable<DataViewResult<Cliente>> {
     // Pesquisa
     let searchedData = JSON.parse(
       JSON.stringify(CLIENTES_MOCK_DATA)
