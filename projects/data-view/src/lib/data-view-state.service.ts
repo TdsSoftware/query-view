@@ -11,8 +11,6 @@ import {
   HttpResponse,
 } from './data-view';
 
-export const PAGE_SIZE_DEFAULT = 10;
-
 @Injectable({
   providedIn: 'root',
 })
@@ -21,10 +19,10 @@ export class DataViewStateService {
   private pageIndex = new Subject<number>();
   private loading = new BehaviorSubject(true);
   private refresh = new Subject<void>();
-  private pageSize = new BehaviorSubject<number>(PAGE_SIZE_DEFAULT);
+  private pageSize = new BehaviorSubject<number>(null);
   private filterOpened = new BehaviorSubject(false);
   private params = new BehaviorSubject<Parametros>({
-    pagination: { pageIndex: 0, pageSize: PAGE_SIZE_DEFAULT },
+    pagination: { pageIndex: 0, pageSize: null },
   });
 
   length$ = this.length.asObservable();
