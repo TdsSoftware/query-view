@@ -1,7 +1,7 @@
 @mixin app-body-theme($theme) {
   $background: map-get($theme, background);
 
-  body {
+  #main-container {
     background-color: map-get($background, status-bar);
   }
 }
