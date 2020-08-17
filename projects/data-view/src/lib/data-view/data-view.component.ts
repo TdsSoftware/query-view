@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Type } from '@angular/core';
+
 import { BehaviorSubject, Subscription } from 'rxjs';
+
 import { DataViewStateService } from '../data-view-state.service';
 import { DataViewMediaService } from '../data-view-media.service';
 
@@ -20,6 +22,7 @@ export class DataViewComponent implements OnInit {
   loading$ = this.stateService.loading$;
   filterMode$ = new BehaviorSubject<'over' | 'side'>('side');
   subscriptions = new Subscription();
+  hasFilter: boolean;
 
   constructor(
     private stateService: DataViewStateService,
@@ -27,6 +30,7 @@ export class DataViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.hasFilter = this.filter ? true : false;
     this.listenMediaChange();
     this.stateService.changePageSize(this.pageSize);
   }

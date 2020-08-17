@@ -18,6 +18,7 @@ interface FilterBadge {
 })
 export class ToolbarComponent implements OnInit {
   @Input() titulo: string;
+  @Input() filter: boolean;
 
   constructor(private stateService: DataViewStateService) {}
 
