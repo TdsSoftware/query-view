@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { ToolbarComponent } from './toolbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ToolbarComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterModule],
   exports: [ToolbarComponent],
 })
 export class ToolbarModule {}
