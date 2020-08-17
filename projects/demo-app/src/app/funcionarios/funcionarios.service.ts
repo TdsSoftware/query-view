@@ -6,7 +6,7 @@ import { delay, map } from 'rxjs/operators';
 import { Parametros, HttpResponse } from 'data-view';
 
 import { Funcionario } from './funcionarios';
-import { FUNCIONARIOS_DATA } from './funcionarios.data';
+import { FUNCIONARIOS_MOCK_DATA } from './funcionarios-mock-data';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class FuncionariosService {
   getAll(params?: Parametros): Observable<HttpResponse<Funcionario>> {
     // Pesquisa
     let searchedData = JSON.parse(
-      JSON.stringify(FUNCIONARIOS_DATA)
+      JSON.stringify(FUNCIONARIOS_MOCK_DATA)
     ) as Funcionario[];
 
     if (params?.search) {

@@ -1,6 +1,6 @@
 import { Funcionario } from './funcionarios';
 
-export const FUNCIONARIOS_DATA: Funcionario[] = [
+export const FUNCIONARIOS_MOCK_DATA: Funcionario[] = [
   {
     id: 1,
     idade: 20,
