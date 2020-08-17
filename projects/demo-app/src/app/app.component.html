@@ -1,4 +1,6 @@
-<div [class.dark-theme]="darkTheme$ | async">
+<div id="container" [class.dark-theme]="darkTheme$ | async" fxLayout="column">
     <app-toolbar></app-toolbar>
-    <app-data-view-funcionario></app-data-view-funcionario>
+    <div fxFlex>
+        <router-outlet></router-outlet>
+    </div>
 </div>

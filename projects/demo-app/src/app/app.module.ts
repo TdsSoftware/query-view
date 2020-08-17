@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FuncionariosModule } from './funcionarios/funcionarios.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
+import { AppRoutingModule } from './app-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +15,8 @@ import { ToolbarModule } from './toolbar/toolbar.module';
     BrowserAnimationsModule,
     FuncionariosModule,
     ToolbarModule,
+    AppRoutingModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
