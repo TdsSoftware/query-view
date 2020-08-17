@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TabelaComponent } from '../tabela/tabela.component';
+import { FiltroComponent } from '../filtro/filtro.component';
 
 @Component({
   selector: 'app-data-view',
@@ -9,6 +10,7 @@ import { TabelaComponent } from '../tabela/tabela.component';
 })
 export class DataViewComponent implements OnInit {
   table = TabelaComponent;
+  filter = FiltroComponent;
 
   constructor() {}
 

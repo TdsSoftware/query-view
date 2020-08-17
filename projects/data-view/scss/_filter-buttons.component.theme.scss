@@ -1,0 +1,5 @@
+@mixin tds-filter-buttons() {
+  .mat-toolbar {
+    height: $mat-toolbar-height-mobile;
+  }
+}
