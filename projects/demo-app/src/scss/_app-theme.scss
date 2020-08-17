@@ -1,14 +1,7 @@
-@import "./_mat-toolbar-custom-theme";
-@import "./_mat-drawer-custom-theme";
-
-@import "./app-body-theme";
-
-@import "projects/data-view/scss/data-view.component.theme";
-
 @mixin app-theme($theme, $typography) {
   /* Material */
-  @include mat-toolbar-custom-theme($theme, $typography);
   @include mat-drawer-custom-theme($theme);
+  @include mat-toolbar-custom-theme($typography);
 
   /* App */
   @include app-body-theme($theme);

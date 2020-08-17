@@ -2,8 +2,9 @@
   $primary: mat-palette($mat-purple);
   $accent: mat-palette($mat-green, A200, A100, A400);
   $theme: mat-dark-theme($primary, $accent);
-
   $typography: get-app-typography();
+
+  $theme: app-bar-override($theme);
 
   @include angular-material-theme($theme);
   @include app-theme($theme, $typography);

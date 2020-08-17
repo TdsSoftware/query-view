@@ -1,0 +1,19 @@
+@function app-bar-override($theme) {
+  $background: map-get($theme, background);
+
+  $new-background: map_merge(
+    $background,
+    (
+      app-bar: map-get($background, card),
+    )
+  );
+
+  $result: map_merge(
+    $theme,
+    (
+      background: $new-background,
+    )
+  );
+
+  @return $result;
+}

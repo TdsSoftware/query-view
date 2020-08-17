@@ -1,7 +1,11 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
+// External Libraries
+@import "projects/data-view/scss/data-view.component.theme";
+
 // Current Scss folder
+@import "./app-bar_override";
 @import "./app-body-theme";
 @import "./app-theme";
 @import "./app-typography";

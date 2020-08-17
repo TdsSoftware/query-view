@@ -1,16 +1,16 @@
 @mixin tds-search-theme($theme, $typography) {
-  $backgorund: map-get($theme, background);
-  $foregorund: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
   tds-search {
     input {
       @include mat-typography-level-to-styles($typography, title);
-      background-color: map-get($backgorund, card);
-      color: map-get($foregorund, text);
+      background: mat-color($background, app-bar);
+      color: mat-color($foreground, text);
     }
 
     ::placeholder {
-      color: map-get($foregorund, text);
+      color: map-get($foreground, text);
     }
   }
 }

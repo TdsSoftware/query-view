@@ -1,14 +1,3 @@
-@mixin mat-toolbar-custom-theme($theme, $typography) {
-  $background: map-get($theme, background);
-
-  .mat-toolbar {
-    background-color: map-get($background, card);
-    color: map-get($background, text);
-
-    .mat-icon {
-      color: map-get($background, icon);
-    }
-  }
-
+@mixin mat-toolbar-custom-theme($typography) {
   @include mat-toolbar-typography($typography);
 }
