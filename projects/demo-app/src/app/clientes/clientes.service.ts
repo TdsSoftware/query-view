@@ -39,20 +39,8 @@ export class ClientesService {
         sortedData.sort((a, b) => a.id - b.id);
         break;
 
-      case 'departamento':
-        sortedData.sort((a, b) => (a.departamento > b.departamento ? 1 : -1));
-        break;
-
-      case 'moeda':
-        sortedData.sort((a, b) => (a.moeda > b.moeda ? 1 : -1));
-        break;
-
       case 'empresa':
         sortedData.sort((a, b) => (a.empresa > b.empresa ? 1 : -1));
-        break;
-
-      case 'pais':
-        sortedData.sort((a, b) => (a.pais > b.pais ? 1 : -1));
         break;
 
       default:
