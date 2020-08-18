@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { startWith, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { DataViewStateService } from 'data-view';
@@ -24,15 +24,21 @@ export class FiltroComponent implements OnInit {
   paises: string[];
   paises$: Observable<string[]>;
 
+  moeda = new FormControl();
+  moedas: string[];
+  moedas$: Observable<string[]>;
+
   constructor(private dataViewStateService: DataViewStateService) {}
 
   ngOnInit(): void {
     this.departamentos = this.loadList('departamento');
     this.paises = this.loadList('pais');
+    this.moedas = this.loadList('moeda');
 
     this.form = new FormGroup({
       departamento: this.departamento,
       pais: this.pais,
+      moeda: this.moeda,
     });
 
     this.departamentos$ = this.departamento.valueChanges.pipe(
@@ -41,6 +47,10 @@ export class FiltroComponent implements OnInit {
 
     this.paises$ = this.pais.valueChanges.pipe(
       map((value) => this.filteredList(this.paises, value))
+    );
+
+    this.moedas$ = this.moeda.valueChanges.pipe(
+      map((value) => this.filteredList(this.moedas, value))
     );
   }
 
@@ -53,6 +63,10 @@ export class FiltroComponent implements OnInit {
 
     if (this.pais.value) {
       filter.pais = this.pais.value;
+    }
+
+    if (this.moeda.value) {
+      filter.moeda = this.moeda.value;
     }
 
     this.dataViewStateService.changeFilter(filter);

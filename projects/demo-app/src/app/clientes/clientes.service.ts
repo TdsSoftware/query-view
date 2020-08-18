@@ -64,6 +64,10 @@ export class ClientesService {
       filteredData = filteredData.filter((c) => c.pais == params.filter.pais);
     }
 
+    if (params?.filter?.moeda) {
+      filteredData = filteredData.filter((c) => c.moeda == params.filter.moeda);
+    }
+
     // Pagination
     const pageIndex = params?.pagination?.pageIndex || 0;
     const pageSize = params?.pagination?.pageSize || 50;

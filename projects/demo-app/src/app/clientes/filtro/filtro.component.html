@@ -3,20 +3,30 @@
     <div id="container" fxFlex fxLayout="column">
 
         <mat-form-field fxFlex>
-            <mat-label>Departamento</mat-label>
-            <input matInput [formControl]="departamento" [matAutocomplete]="autocompleteDep">
-            <mat-autocomplete autoActiveFirstOption #autocompleteDep="matAutocomplete">
-                <mat-option *ngFor="let option of departamentos$ | async" [value]="option">
+            <mat-label>País</mat-label>
+            <input matInput [formControl]="pais" [matAutocomplete]="autocompletePais">
+            <mat-autocomplete autoActiveFirstOption #autocompletePais="matAutocomplete">
+                <mat-option *ngFor="let option of paises$ | async" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field fxFlex>
-            <mat-label>País</mat-label>
-            <input matInput [formControl]="pais" [matAutocomplete]="autocompletePais">
-            <mat-autocomplete autoActiveFirstOption #autocompletePais="matAutocomplete">
-                <mat-option *ngFor="let option of paises$ | async" [value]="option">
+            <mat-label>Moeda</mat-label>
+            <input matInput [formControl]="moeda" [matAutocomplete]="autocompleteMoeda">
+            <mat-autocomplete autoActiveFirstOption #autocompleteMoeda="matAutocomplete">
+                <mat-option *ngFor="let option of moedas$ | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+            <mat-label>Departamento</mat-label>
+            <input matInput [formControl]="departamento" [matAutocomplete]="autocompleteDep">
+            <mat-autocomplete autoActiveFirstOption #autocompleteDep="matAutocomplete">
+                <mat-option *ngFor="let option of departamentos$ | async" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-autocomplete>
