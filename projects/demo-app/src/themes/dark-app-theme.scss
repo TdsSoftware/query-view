@@ -9,11 +9,8 @@
   // Override for "typography"
   $typography: typography-override();
 
-  $config: (
-    color: $theme,
-    typography: $typography,
-  );
+  @include angular-material-theme($theme);
+  @include angular-material-typography($typography);
 
-  @include angular-material-theme($config);
   @include data-view-theme($theme, $typography);
 }
