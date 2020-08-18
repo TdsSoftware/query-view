@@ -1,7 +1,0 @@
-@mixin tds-table-theme($theme) {
-  $background: map-get($theme, background);
-
-  tds-table {
-    background-color: map-get($background, app-bar);
-  }
-}
