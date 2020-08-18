@@ -23,8 +23,8 @@ export class TabelaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.dataViewStateService.getData<Usuario>(() =>
-      this.usuariosService.getAll()
+    this.data$ = this.dataViewStateService.getData<Usuario>((params) =>
+      this.usuariosService.getAll(params)
     );
   }
 }
