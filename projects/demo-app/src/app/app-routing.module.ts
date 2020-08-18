@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { FuncionariosModule } from './funcionarios/funcionarios.module';
 import { ClientesModule } from './clientes/clientes.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => ClientesModule,
+  },
+  {
+    path: 'usuarios',
+    loadChildren: () => UsuariosModule,
   },
   {
     path: '**',

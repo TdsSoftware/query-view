@@ -12,6 +12,10 @@
         Clientes
     </button>
 
+    <button mat-button routerLink="/usuarios">
+        Usuários
+    </button>
+
     <button mat-icon-button (click)="toggleTheme()" matTooltip="Trocar tema">
         <mat-icon>{{ (darkTheme$ | async) ? 'flash_off' : 'flash_on'}}</mat-icon>
     </button>
