@@ -1,7 +1,5 @@
 @import "./search.component.theme";
-@import "./filter-buttons.component.theme";
 
 @mixin tds-data-view-theme($theme) {
   @include tds-search-theme($theme);
-  @include tds-filter-buttons();
 }
