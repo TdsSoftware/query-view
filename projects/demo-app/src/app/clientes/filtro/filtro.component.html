@@ -1,7 +1,20 @@
-<div id="form-container" fxLayout="column">
+<form [formGroup]="form" #ngForm="ngForm" fxLayout="column" (submit)="onSubmit()">
+
     <div id="container" fxFlex>
-        Filtro works
+
+        <mat-form-field fxFlex>
+            <mat-label>Departamento</mat-label>
+            <input matInput [formControl]="departamento" [matAutocomplete]="auto">
+
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of departListFiltered$ | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+
+        </mat-form-field>
+
     </div>
 
-    <tds-filter-buttons></tds-filter-buttons>
-</div>
+    <tds-filter-buttons [ngForm]="ngForm"></tds-filter-buttons>
+</form>

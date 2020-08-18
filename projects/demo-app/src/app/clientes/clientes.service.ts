@@ -66,11 +66,11 @@ export class ClientesService {
     // Filter
     let filteredData = sortedData;
 
-    // if (params?.filter?.idadeMax) {
-    //   filteredData = filteredData.filter(
-    //     (p) => p.idade <= params.filter.idadeMax
-    //   );
-    // }
+    if (params?.filter?.departamento) {
+      filteredData = filteredData.filter(
+        (c) => c.departamento == params.filter.departamento
+      );
+    }
 
     // Pagination
     const pageIndex = params?.pagination?.pageIndex || 0;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { ClientesRoutingModule } from './clientes-routing.module';
@@ -9,7 +10,18 @@ import { FiltroComponent } from './filtro/filtro.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [DataViewComponent, TabelaComponent, FiltroComponent, HomeComponent],
-  imports: [CommonModule, ClientesRoutingModule, SharedModule],
+  declarations: [
+    DataViewComponent,
+    TabelaComponent,
+    FiltroComponent,
+    HomeComponent,
+  ],
+  imports: [
+    CommonModule,
+    ClientesRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ClientesModule {}
