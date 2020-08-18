@@ -16,7 +16,7 @@ export class UsuariosService {
 
   getAll(): Observable<DataViewResult<Usuario>> {
     return of(USUARIOS_MOCK_DATA).pipe(
-      delay(2000),
+      delay(100),
       map((usuarios) => ({
         data: usuarios,
         length: usuarios.length,
