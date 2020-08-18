@@ -15,24 +15,23 @@ import { CLIENTES_MOCK_DATA } from '../clientes-mock-data';
 })
 export class FiltroComponent implements OnInit {
   form: FormGroup;
-  departamento: FormControl;
-  departList: string[];
-  departListFiltered$: Observable<string[]>;
+
+  departamento = new FormControl();
+  departamentos: string[];
+  departamentos$: Observable<string[]>;
 
   constructor(private dataViewStateService: DataViewStateService) {}
 
   ngOnInit(): void {
-    this.departList = [
+    this.departamentos = [
       ...new Set(CLIENTES_MOCK_DATA.map((x) => x.departamento)),
     ].sort();
-
-    this.departamento = new FormControl();
 
     this.form = new FormGroup({
       departamento: this.departamento,
     });
 
-    this.departListFiltered$ = this.departamento.valueChanges.pipe(
+    this.departamentos$ = this.departamento.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
@@ -51,7 +50,7 @@ export class FiltroComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.departList.filter(
+    return this.departamentos.filter(
       (option) => option.toLowerCase().indexOf(filterValue) === 0
     );
   }

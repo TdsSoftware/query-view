@@ -7,7 +7,7 @@
             <input matInput [formControl]="departamento" [matAutocomplete]="auto">
 
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of departListFiltered$ | async" [value]="option">
+                <mat-option *ngFor="let option of departamentos$ | async" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-autocomplete>
