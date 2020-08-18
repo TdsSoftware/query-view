@@ -42,15 +42,15 @@ export class FiltroComponent implements OnInit {
     });
 
     this.departamentos$ = this.departamento.valueChanges.pipe(
-      map((value) => this.filteredList(this.departamentos, value))
+      map((value) => this.filterList(this.departamentos, value))
     );
 
     this.paises$ = this.pais.valueChanges.pipe(
-      map((value) => this.filteredList(this.paises, value))
+      map((value) => this.filterList(this.paises, value))
     );
 
     this.moedas$ = this.moeda.valueChanges.pipe(
-      map((value) => this.filteredList(this.moedas, value))
+      map((value) => this.filterList(this.moedas, value))
     );
   }
 
@@ -72,7 +72,7 @@ export class FiltroComponent implements OnInit {
     this.dataViewStateService.changeFilter(filter);
   }
 
-  filteredList(list: string[], value: string): string[] {
+  filterList(list: string[], value: string): string[] {
     return list.filter(
       (option) => option.toLowerCase().indexOf(value.toLowerCase()) === 0
     );
