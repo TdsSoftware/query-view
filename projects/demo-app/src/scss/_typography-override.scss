@@ -1,3 +1,3 @@
-@function get-app-typography() {
+@function typography-override() {
   @return mat-typography-config($title: mat-typography-level(20px, 32px, 400));
 }
