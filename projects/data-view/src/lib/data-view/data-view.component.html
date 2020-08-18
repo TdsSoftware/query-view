@@ -13,7 +13,10 @@
         <div id="table-container" fxLayout="column" fxFlex [style.margin-top]="margin" [ngClass]="getElevation()">
             <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
             <tds-table fxFlex [table]="table"></tds-table>
-            <tds-paginator></tds-paginator>
+
+            <ng-container *ngIf="paginator">
+                <tds-paginator></tds-paginator>
+            </ng-container>
         </div>
 
     </mat-drawer-content>

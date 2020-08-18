@@ -15,7 +15,7 @@ import { Usuario } from '../usuarios';
 export class TabelaComponent implements OnInit {
   data$: Observable<Usuario[]>;
 
-  displayedColumns = ['avatar', 'username', 'email'];
+  displayedColumns = ['id', 'avatar', 'username', 'email'];
 
   constructor(
     private dataViewStateService: DataViewStateService,
