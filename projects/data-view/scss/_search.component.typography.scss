@@ -1,0 +1,7 @@
+@mixin tds-search-typography($typography) {
+  tds-search {
+    input {
+      @include mat-typography-level-to-styles($typography, title);
+    }
+  }
+}

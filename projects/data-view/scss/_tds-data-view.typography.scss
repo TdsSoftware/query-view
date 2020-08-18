@@ -1,0 +1,5 @@
+@import "./search.component.typography";
+
+@mixin tds-data-view-typography($typography) {
+  @include tds-search-typography($typography);
+}

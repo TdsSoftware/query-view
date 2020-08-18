@@ -12,5 +12,6 @@
   @include angular-material-theme($theme);
   @include angular-material-typography($typography);
 
-  @include data-view-theme($theme, $typography);
+  @include tds-data-view-theme($theme);
+  @include tds-data-view-typography($typography);
 }
