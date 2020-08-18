@@ -36,9 +36,7 @@ export class ClientesService {
       const search = params.search.toLowerCase();
       searchedData = searchedData.filter(
         (cliente) =>
-          cliente.pais.toLowerCase().includes(search) ||
-          cliente.departamento.toLowerCase().includes(search) ||
-          cliente.moeda.toLowerCase().includes(search) ||
+          cliente.id.toString().includes(search) ||
           cliente.empresa.toLowerCase().includes(search)
       );
     }
@@ -53,6 +51,14 @@ export class ClientesService {
 
       case 'empresa':
         sortedData.sort((a, b) => (a.empresa > b.empresa ? 1 : -1));
+        break;
+
+      case 'pais':
+        sortedData.sort((a, b) => (a.pais > b.pais ? 1 : -1));
+        break;
+
+      case 'departamento':
+        sortedData.sort((a, b) => (a.departamento > b.departamento ? 1 : -1));
         break;
 
       default:
