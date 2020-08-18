@@ -14,6 +14,18 @@ import { CLIENTES_MOCK_DATA } from './clientes-mock-data';
 export class ClientesService {
   constructor() {}
 
+  getDepartamentos() {
+    return [...new Set(CLIENTES_MOCK_DATA.map((x) => x.departamento))].sort();
+  }
+
+  getPaises() {
+    return [...new Set(CLIENTES_MOCK_DATA.map((x) => x.pais))].sort();
+  }
+
+  getMoedas() {
+    return [...new Set(CLIENTES_MOCK_DATA.map((x) => x.moeda))].sort();
+  }
+
   getAll(params?: Parametros): Observable<DataViewResult<Cliente>> {
     // Pesquisa
     let searchedData = JSON.parse(

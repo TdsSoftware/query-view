@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { DataViewStateService } from 'data-view';
 
 import { CLIENTES_MOCK_DATA } from '../clientes-mock-data';
+import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-filtro',
@@ -17,24 +18,23 @@ export class FiltroComponent implements OnInit {
   form: FormGroup;
 
   departamento = new FormControl('');
-  departamentos: string[];
+  departamentos = this.clienteService.getDepartamentos();
   departamentos$: Observable<string[]>;
 
   pais = new FormControl('');
-  paises: string[];
+  paises = this.clienteService.getPaises();
   paises$: Observable<string[]>;
 
   moeda = new FormControl('');
-  moedas: string[];
+  moedas = this.clienteService.getMoedas();
   moedas$: Observable<string[]>;
 
-  constructor(private dataViewStateService: DataViewStateService) {}
+  constructor(
+    private dataViewStateService: DataViewStateService,
+    private clienteService: ClientesService
+  ) {}
 
   ngOnInit(): void {
-    this.departamentos = this.loadList('departamento');
-    this.paises = this.loadList('pais');
-    this.moedas = this.loadList('moeda');
-
     this.form = new FormGroup({
       departamento: this.departamento,
       pais: this.pais,
@@ -76,9 +76,5 @@ export class FiltroComponent implements OnInit {
     return list.filter(
       (option) => option.toLowerCase().indexOf(value.toLowerCase()) === 0
     );
-  }
-
-  loadList(key: string) {
-    return [...new Set(CLIENTES_MOCK_DATA.map((x) => x[key]))].sort();
   }
 }
