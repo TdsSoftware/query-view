@@ -16,15 +16,15 @@ import { CLIENTES_MOCK_DATA } from '../clientes-mock-data';
 export class FiltroComponent implements OnInit {
   form: FormGroup;
 
-  departamento = new FormControl();
+  departamento = new FormControl('');
   departamentos: string[];
   departamentos$: Observable<string[]>;
 
-  pais = new FormControl();
+  pais = new FormControl('');
   paises: string[];
   paises$: Observable<string[]>;
 
-  moeda = new FormControl();
+  moeda = new FormControl('');
   moedas: string[];
   moedas$: Observable<string[]>;
 
