@@ -20,20 +20,27 @@ export class FiltroComponent implements OnInit {
   departamentos: string[];
   departamentos$: Observable<string[]>;
 
+  pais = new FormControl();
+  paises: string[];
+  paises$: Observable<string[]>;
+
   constructor(private dataViewStateService: DataViewStateService) {}
 
   ngOnInit(): void {
-    this.departamentos = [
-      ...new Set(CLIENTES_MOCK_DATA.map((x) => x.departamento)),
-    ].sort();
+    this.departamentos = this.loadList('departamento');
+    this.paises = this.loadList('pais');
 
     this.form = new FormGroup({
       departamento: this.departamento,
+      pais: this.pais,
     });
 
     this.departamentos$ = this.departamento.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value))
+      map((value) => this.filteredList(this.departamentos, value))
+    );
+
+    this.paises$ = this.pais.valueChanges.pipe(
+      map((value) => this.filteredList(this.paises, value))
     );
   }
 
@@ -44,14 +51,20 @@ export class FiltroComponent implements OnInit {
       filter.departamento = this.departamento.value;
     }
 
+    if (this.pais.value) {
+      filter.pais = this.pais.value;
+    }
+
     this.dataViewStateService.changeFilter(filter);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.departamentos.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0
+  filteredList(list: string[], value: string): string[] {
+    return list.filter(
+      (option) => option.toLowerCase().indexOf(value.toLowerCase()) === 0
     );
+  }
+
+  loadList(key: string) {
+    return [...new Set(CLIENTES_MOCK_DATA.map((x) => x[key]))].sort();
   }
 }

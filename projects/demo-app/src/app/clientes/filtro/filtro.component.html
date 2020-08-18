@@ -1,17 +1,25 @@
 <form [formGroup]="form" #ngForm="ngForm" fxLayout="column" (submit)="onSubmit()">
 
-    <div id="container" fxFlex>
+    <div id="container" fxFlex fxLayout="column">
 
         <mat-form-field fxFlex>
             <mat-label>Departamento</mat-label>
-            <input matInput [formControl]="departamento" [matAutocomplete]="auto">
-
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <input matInput [formControl]="departamento" [matAutocomplete]="autocompleteDep">
+            <mat-autocomplete autoActiveFirstOption #autocompleteDep="matAutocomplete">
                 <mat-option *ngFor="let option of departamentos$ | async" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-autocomplete>
+        </mat-form-field>
 
+        <mat-form-field fxFlex>
+            <mat-label>País</mat-label>
+            <input matInput [formControl]="pais" [matAutocomplete]="autocompletePais">
+            <mat-autocomplete autoActiveFirstOption #autocompletePais="matAutocomplete">
+                <mat-option *ngFor="let option of paises$ | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
 
     </div>

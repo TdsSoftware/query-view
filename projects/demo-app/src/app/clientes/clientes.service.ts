@@ -60,6 +60,10 @@ export class ClientesService {
       );
     }
 
+    if (params?.filter?.pais) {
+      filteredData = filteredData.filter((c) => c.pais == params.filter.pais);
+    }
+
     // Pagination
     const pageIndex = params?.pagination?.pageIndex || 0;
     const pageSize = params?.pagination?.pageSize || 50;
