@@ -21,8 +21,10 @@ export class UsuariosService {
         params.search
           ? usuarios.filter(
               (u) =>
-                u.username.includes(params.search) ||
-                u.email.includes(params.search)
+                u.username
+                  .toLowerCase()
+                  .includes(params.search.toLowerCase()) ||
+                u.email.toLowerCase().includes(params.search.toLowerCase())
             )
           : usuarios
       ),
