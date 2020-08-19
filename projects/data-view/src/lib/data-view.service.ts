@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Subject, Observable, BehaviorSubject, merge } from 'rxjs';
-import { map, tap, switchMap } from 'rxjs/operators';
+import { map, tap, switchMap, filter } from 'rxjs/operators';
 
 import { DataViewStateService } from './data-view-state.service';
 import { DataViewResult, Parametros, Ordenacao } from './data-view';
@@ -19,7 +19,8 @@ export class DataViewService {
 
   getData<T>(request: (params: Parametros) => Observable<DataViewResult<T>>) {
     const params$ = merge(this.dataViewStateService.params$, this.refresh).pipe(
-      switchMap(() => this.dataViewStateService.params$)
+      switchMap(() => this.dataViewStateService.params$),
+      filter(Boolean)
     );
 
     const data$ = params$.pipe(

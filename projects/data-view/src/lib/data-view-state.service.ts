@@ -19,7 +19,7 @@ export class DataViewStateService {
 
   constructor() {}
 
-  iniciar() {
+  limpar() {
     this.params.next(null);
   }
 

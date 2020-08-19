@@ -35,11 +35,11 @@ export class DataViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.stateService.limpar();
+
     this.hasFilter = this.filter ? true : false;
     this.listenMediaChange();
     if (this.paginator) this.stateService.changePageSize(this.pageSize);
-
-    this.stateService.iniciar();
   }
 
   ngOnDestroy() {
