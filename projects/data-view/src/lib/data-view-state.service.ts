@@ -19,6 +19,10 @@ export class DataViewStateService {
 
   constructor() {}
 
+  iniciar() {
+    this.params.next(null);
+  }
+
   changeFilter(filter: Filtro) {
     const pagination = this.getFirstPage();
     this.pageIndex.next(0);
