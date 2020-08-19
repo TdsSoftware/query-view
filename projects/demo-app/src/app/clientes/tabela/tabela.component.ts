@@ -27,8 +27,6 @@ export class TabelaComponent implements OnInit {
     this.data$ = this.dataViewService.getData((params: Parametros) =>
       this.clientesService.getAll(params)
     );
-
-    this.data$.subscribe((x) => console.log('data$', x));
   }
 
   sortData(sort: Sort) {
