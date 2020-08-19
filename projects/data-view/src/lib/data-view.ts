@@ -4,7 +4,7 @@ export interface DataViewResult<T> {
 }
 
 export interface Parametros {
-  pagination: Paginacao;
+  pagination?: Paginacao;
   filter?: Filtro;
   sort?: Ordenacao;
   search?: string;
