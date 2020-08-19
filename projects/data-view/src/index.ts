@@ -15,9 +15,11 @@ export * from './lib/toolbar/toolbar.component';
 export * from './lib/data-view';
 
 // Services
+export * from './lib/data-view-interface.service';
 export * from './lib/data-view-media.service';
 export * from './lib/data-view-render.service';
 export * from './lib/data-view-state.service';
+export * from './lib/data-view.service';
 
 //Modules
 export * from './lib/data-view.module';

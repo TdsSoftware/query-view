@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 
 import { DataViewStateService } from '../data-view-state.service';
-import { Paginacao } from '../data-view';
+import { DataViewService } from '../data-view.service';
 
 @Component({
   selector: 'tds-paginator',
@@ -16,20 +16,21 @@ export class PaginatorComponent implements OnInit {
   pageIndex$: Observable<number>;
   pageSize$: Observable<number>;
 
-  constructor(private stateService: DataViewStateService) {}
+  constructor(
+    private stateService: DataViewStateService,
+    private dataService: DataViewService
+  ) {}
 
   ngOnInit(): void {
     this.pageSize$ = this.stateService.pageSize$;
-    this.length$ = this.stateService.length$;
     this.pageIndex$ = this.stateService.pageIndex$;
+    this.length$ = this.dataService.length$;
   }
 
   onPage(event: PageEvent) {
-    const paginacao: Paginacao = {
+    this.stateService.changePagination({
       pageIndex: event.pageIndex,
       pageSize: event.pageSize,
-    };
-
-    this.stateService.changePagination(paginacao);
+    });
   }
 }

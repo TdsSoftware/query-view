@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
-
-import { DataViewStateService } from 'data-view';
+import { DataViewService } from 'data-view';
 
 import { UsuariosService } from '../usuarios.service';
 import { Usuario } from '../usuarios';
@@ -11,19 +10,19 @@ import { Usuario } from '../usuarios';
   selector: 'app-tabela',
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.scss'],
+  providers: [DataViewService],
 })
 export class TabelaComponent implements OnInit {
   data$: Observable<Usuario[]>;
-
   displayedColumns = ['id', 'avatar', 'username', 'email'];
 
   constructor(
-    private dataViewStateService: DataViewStateService,
+    private dataViewService: DataViewService,
     private usuariosService: UsuariosService
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.dataViewStateService.getData<Usuario>((params) =>
+    this.data$ = this.dataViewService.getData<Usuario>((params) =>
       this.usuariosService.getAll(params)
     );
   }

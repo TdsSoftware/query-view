@@ -6,6 +6,7 @@ import { Parametros, Ordenacao, DataViewStateService } from 'data-view';
 
 import { ClientesService } from '../clientes.service';
 import { Cliente } from '../clientes';
+import { DataViewService } from 'projects/data-view/src/lib/data-view.service';
 
 @Component({
   selector: 'app-tabela',
@@ -18,13 +19,16 @@ export class TabelaComponent implements OnInit {
 
   constructor(
     private clientesService: ClientesService,
+    private dataViewService: DataViewService,
     private dataViewStateService: DataViewStateService
   ) {}
 
   ngOnInit() {
-    this.data$ = this.dataViewStateService.getData((params: Parametros) =>
+    this.data$ = this.dataViewService.getData((params: Parametros) =>
       this.clientesService.getAll(params)
     );
+
+    this.data$.subscribe((x) => console.log('data$', x));
   }
 
   sortData(sort: Sort) {

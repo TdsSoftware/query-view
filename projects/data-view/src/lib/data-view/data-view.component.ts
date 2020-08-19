@@ -2,8 +2,10 @@ import { Component, OnInit, Input, Type } from '@angular/core';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { DataViewStateService } from '../data-view-state.service';
 import { DataViewMediaService } from '../data-view-media.service';
+import { DataViewService } from '../data-view.service';
+import { DataViewInterfaceService } from '../data-view-interface.service';
+import { DataViewStateService } from '../data-view-state.service';
 
 @Component({
   selector: 'tds-data-view',
@@ -19,15 +21,17 @@ export class DataViewComponent implements OnInit {
   @Input() pageSize: number = 10;
   @Input() paginator = true;
 
-  filterOpened$ = this.stateService.filterOpened$;
-  loading$ = this.stateService.loading$;
+  filterOpened$ = this.interfaceService.filter$;
+  loading$ = this.dataService.loading$;
   filterMode$ = new BehaviorSubject<'over' | 'side'>('side');
   subscriptions = new Subscription();
   hasFilter: boolean;
 
   constructor(
-    private stateService: DataViewStateService,
-    private mediaService: DataViewMediaService
+    private interfaceService: DataViewInterfaceService,
+    private dataService: DataViewService,
+    private mediaService: DataViewMediaService,
+    private stateService: DataViewStateService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +45,7 @@ export class DataViewComponent implements OnInit {
   }
 
   close() {
-    this.stateService.closeFilter();
+    this.interfaceService.closeFilter();
   }
 
   listenMediaChange() {

@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 
 import { DataViewStateService } from '../data-view-state.service';
 import { Parametros } from '../data-view';
+import { DataViewService } from '../data-view.service';
+import { DataViewInterfaceService } from '../data-view-interface.service';
 
 interface FilterBadge {
   numFilters: number;
@@ -20,7 +22,11 @@ export class ToolbarComponent implements OnInit {
   @Input() titulo: string;
   @Input() filter: boolean;
 
-  constructor(private stateService: DataViewStateService) {}
+  constructor(
+    private stateService: DataViewStateService,
+    private interfaceService: DataViewInterfaceService,
+    private dataService: DataViewService
+  ) {}
 
   filterBadge$: Observable<FilterBadge>;
 
@@ -37,10 +43,10 @@ export class ToolbarComponent implements OnInit {
   }
 
   refresh() {
-    this.stateService.refreshData();
+    this.dataService.refreshData();
   }
 
   toggleFilter() {
-    this.stateService.toggleFilter();
+    this.interfaceService.toggleFilter();
   }
 }

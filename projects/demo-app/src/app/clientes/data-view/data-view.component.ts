@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataViewService } from 'data-view';
+
 import { TabelaComponent } from '../tabela/tabela.component';
 import { FiltroComponent } from '../filtro/filtro.component';
-import { DataViewStateService } from 'data-view';
 
 @Component({
   selector: 'app-data-view',
   templateUrl: './data-view.component.html',
   styleUrls: ['./data-view.component.scss'],
-  providers: [DataViewStateService],
+  providers: [DataViewService],
 })
 export class DataViewComponent implements OnInit {
   table = TabelaComponent;

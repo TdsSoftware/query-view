@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Funcionario } from '../funcionarios';
 import { FuncionariosService } from '../funcionarios.service';
 import { Parametros, Ordenacao, DataViewStateService } from 'data-view';
+import { DataViewService } from 'projects/data-view/src/lib/data-view.service';
 
 @Component({
   selector: 'app-tabela-funcionario',
@@ -18,11 +19,12 @@ export class TabelaComponent implements OnInit {
 
   constructor(
     private funcionariosService: FuncionariosService,
+    private dataViewService: DataViewService,
     private dataViewStateService: DataViewStateService
   ) {}
 
   ngOnInit() {
-    this.data$ = this.dataViewStateService.getData((params: Parametros) =>
+    this.data$ = this.dataViewService.getData((params: Parametros) =>
       this.funcionariosService.getAll(params)
     );
   }

@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 
 import { DataViewStateService } from 'data-view';
 
-import { CLIENTES_MOCK_DATA } from '../clientes-mock-data';
 import { ClientesService } from '../clientes.service';
 
 @Component({
