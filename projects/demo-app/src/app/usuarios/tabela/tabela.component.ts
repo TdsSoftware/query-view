@@ -10,7 +10,6 @@ import { Usuario } from '../usuarios';
   selector: 'app-tabela',
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.scss'],
-  providers: [DataViewService],
 })
 export class TabelaComponent implements OnInit {
   data$: Observable<Usuario[]>;
