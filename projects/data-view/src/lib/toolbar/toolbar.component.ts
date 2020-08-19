@@ -37,7 +37,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   mapFilterBadge(params: Parametros) {
-    const numFilters = params.filter ? Object.keys(params.filter).length : 0;
+    const numFilters = params?.filter ? Object.keys(params.filter).length : 0;
     const hidden = numFilters === 0;
     return <FilterBadge>{ numFilters, hidden };
   }
