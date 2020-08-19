@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { Observable } from 'rxjs';
-import { Parametros, Ordenacao, DataViewStateService } from 'data-view';
+import { Parametros, Ordenacao, DataViewService } from 'data-view';
 
 import { ClientesService } from '../clientes.service';
 import { Cliente } from '../clientes';
-import { DataViewService } from 'projects/data-view/src/lib/data-view.service';
 
 @Component({
   selector: 'app-tabela',
@@ -19,8 +18,7 @@ export class TabelaComponent implements OnInit {
 
   constructor(
     private clientesService: ClientesService,
-    private dataViewService: DataViewService,
-    private dataViewStateService: DataViewStateService
+    private dataViewService: DataViewService
   ) {}
 
   ngOnInit() {
@@ -30,6 +28,6 @@ export class TabelaComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    this.dataViewStateService.changeSort(sort as Ordenacao);
+    this.dataViewService.changeSort(sort as Ordenacao);
   }
 }

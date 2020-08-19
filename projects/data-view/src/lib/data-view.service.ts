@@ -4,7 +4,7 @@ import { Subject, Observable, BehaviorSubject, merge } from 'rxjs';
 import { map, tap, switchMap } from 'rxjs/operators';
 
 import { DataViewStateService } from './data-view-state.service';
-import { DataViewResult, Parametros } from './data-view';
+import { DataViewResult, Parametros, Ordenacao } from './data-view';
 
 @Injectable()
 export class DataViewService {
@@ -36,5 +36,9 @@ export class DataViewService {
 
   refreshData() {
     this.refresh.next();
+  }
+
+  changeSort(value: Ordenacao) {
+    this.dataViewStateService.changeSort(value);
   }
 }

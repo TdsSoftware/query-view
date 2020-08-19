@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { Observable } from 'rxjs';
-import {
-  DataViewService,
-  Parametros,
-  Ordenacao,
-  DataViewStateService,
-} from 'data-view';
+import { DataViewService, Parametros, Ordenacao } from 'data-view';
 
 import { Funcionario } from '../funcionarios';
 import { FuncionariosService } from '../funcionarios.service';
@@ -23,8 +18,7 @@ export class TabelaComponent implements OnInit {
 
   constructor(
     private funcionariosService: FuncionariosService,
-    private dataViewService: DataViewService,
-    private dataViewStateService: DataViewStateService
+    private dataViewService: DataViewService
   ) {}
 
   ngOnInit() {
@@ -34,7 +28,7 @@ export class TabelaComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    this.dataViewStateService.changeSort(sort as Ordenacao);
+    this.dataViewService.changeSort(sort as Ordenacao);
   }
 
   setColor(idade: number) {
