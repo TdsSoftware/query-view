@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40tds-software%2Fdata-view.svg)](https://badge.fury.io/js/%40tds-software%2Fdata-view)
+
 # TdsDataView
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
