@@ -18,7 +18,7 @@ export class UsuariosService {
     return of(USUARIOS_MOCK_DATA).pipe(
       delay(100),
       map((usuarios) =>
-        params.search
+        params?.search
           ? usuarios.filter(
               (u) =>
                 u.username
