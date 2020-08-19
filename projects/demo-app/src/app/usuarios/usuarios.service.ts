@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { of, Observable } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
-
+import { delay, map } from 'rxjs/operators';
 import { DataViewResult, Parametros } from 'data-view';
 
 import { USUARIOS_MOCK_DATA } from './usuarios-mock-data';
@@ -16,22 +15,20 @@ export class UsuariosService {
 
   getAll(params: Parametros): Observable<DataViewResult<Usuario>> {
     return of(USUARIOS_MOCK_DATA).pipe(
-      delay(100),
-      map((usuarios) =>
-        params?.search
-          ? usuarios.filter(
-              (u) =>
-                u.username
-                  .toLowerCase()
-                  .includes(params.search.toLowerCase()) ||
-                u.email.toLowerCase().includes(params.search.toLowerCase())
-            )
-          : usuarios
-      ),
-      map((usuarios) => ({
-        data: usuarios,
-        length: usuarios.length,
-      }))
+      map((usuarios) => this.filtrarUsuarios(usuarios, params?.search)),
+      delay(500),
+      map((data) => ({ data, length: data.length }))
+    );
+  }
+
+  private filtrarUsuarios(usuarios: Usuario[], search: string) {
+    if (search == null) return usuarios;
+    search = search.toLowerCase();
+
+    return usuarios.filter(
+      (u) =>
+        u.username.toLowerCase().includes(search) ||
+        u.email.toLowerCase().includes(search)
     );
   }
 }
