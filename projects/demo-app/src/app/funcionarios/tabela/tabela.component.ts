@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { Observable } from 'rxjs';
+import {
+  DataViewService,
+  Parametros,
+  Ordenacao,
+  DataViewStateService,
+} from 'data-view';
 
 import { Funcionario } from '../funcionarios';
 import { FuncionariosService } from '../funcionarios.service';
-import { Parametros, Ordenacao, DataViewStateService } from 'data-view';
-import { DataViewService } from 'projects/data-view/src/lib/data-view.service';
 
 @Component({
   selector: 'app-tabela-funcionario',
