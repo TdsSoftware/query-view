@@ -94,13 +94,9 @@ export class ClientesService {
     const end = start + pageSize;
 
     return of(filteredData).pipe(
-      delay(this.getRandomNumber(500, 1500)),
+      delay(500),
       map((data: any[]) => data.slice(start, end)),
       map((data) => ({ data, length: filteredData.length }))
     );
-  }
-
-  private getRandomNumber(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
