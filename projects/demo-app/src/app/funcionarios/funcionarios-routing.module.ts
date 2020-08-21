@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DataViewComponent } from './data-view/data-view.component';
+import { QueryViewComponent } from './query-view/query-view.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DataViewComponent,
+    component: QueryViewComponent,
   },
 ];
 

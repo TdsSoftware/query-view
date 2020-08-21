@@ -13,7 +13,9 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "data-view": ["projects/data-view/src"]
+      "data-view": ["projects/data-view/src"],
+      "query-view": ["projects/query-view/src"],
+      "core": ["projects/core/src"]
     }
   }
 }

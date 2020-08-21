@@ -17,19 +17,19 @@ export class TabelaComponent implements OnInit {
   colunas = ['id', 'nome', 'sobrenome', 'idade', 'empresa', 'email'];
 
   constructor(
-    private funcionariosService: FuncionariosService,
-    private dataViewService: DataViewService
-  ) {}
+    private funcionariosService: FuncionariosService
+  ) //private dataViewService: DataViewService
+  {}
 
   ngOnInit() {
-    this.data$ = this.dataViewService.getData((params: Parametros) =>
-      this.funcionariosService.getAll(params)
-    );
+    // this.data$ = this.dataViewService.getData((params: Parametros) =>
+    //   this.funcionariosService.getAll(params)
+    // );
   }
 
-  sortData(sort: Sort) {
-    this.dataViewService.changeSort(sort as Ordenacao);
-  }
+  // sortData(sort: Sort) {
+  //   this.dataViewService.changeSort(sort as Ordenacao);
+  // }
 
   setColor(idade: number) {
     const min = 20;
