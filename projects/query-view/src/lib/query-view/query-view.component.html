@@ -1,3 +1,11 @@
-<tds-table [table]="table"></tds-table>
+<mat-sidenav-container>
 
-<tds-filter [filter]="filter"></tds-filter>
+    <mat-sidenav>
+        <tds-filter [filter]="filter"></tds-filter>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <tds-table [table]="table"></tds-table>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

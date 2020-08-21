@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { TableDirective } from './table.directive';
+import { TableDirective } from './directives/table.directive';
 import { FilterDirective } from './directives/filter.directive';
 
 @NgModule({
