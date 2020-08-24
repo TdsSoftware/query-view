@@ -1,11 +1,18 @@
-<mat-sidenav-container>
+<mat-drawer-container (backdropClick)="close()">
 
-    <mat-sidenav>
+    <mat-drawer *ngIf="filter" [mode]="filterMode$ | async" [opened]="filterOpened$ | async" position="end"
+        disableClose>
         <tds-filter [filter]="filter"></tds-filter>
-    </mat-sidenav>
+    </mat-drawer>
 
-    <mat-sidenav-content>
-        <tds-table [table]="table"></tds-table>
-    </mat-sidenav-content>
+    <mat-drawer-content [style.padding]="margin" fxLayout="column">
 
-</mat-sidenav-container>
+        <tds-toolbar [titulo]="title" [ngClass]="getElevation()" [filter]="filter != null"></tds-toolbar>
+
+        <div fxFlex id="table-container" [style.margin-top]="margin" [ngClass]="getElevation()">
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+            <tds-table fxFlex [table]="table"></tds-table>
+        </div>
+    </mat-drawer-content>
+
+</mat-drawer-container>

@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}

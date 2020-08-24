@@ -1,33 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-
-import { Observable } from 'rxjs';
-import { DataViewService, Parametros, Ordenacao } from 'data-view';
+import { PageEvent } from '@angular/material/paginator';
 
 import { Funcionario } from '../funcionarios';
-import { FuncionariosService } from '../funcionarios.service';
+import { Paginacao, Ordenacao } from 'core';
 
 @Component({
-  selector: 'app-tabela-funcionario',
+  selector: 'app-tabela',
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.scss'],
 })
 export class TabelaComponent implements OnInit {
-  data$: Observable<Funcionario[]>;
+  @Input() funcionarios: Funcionario[];
+  @Input() registros: number;
+  @Output() paginacao = new EventEmitter<Paginacao>();
+  @Output() ordenacao = new EventEmitter<Ordenacao>();
+
   colunas = ['id', 'nome', 'sobrenome', 'idade', 'empresa', 'email'];
 
-  constructor(
-    private funcionariosService: FuncionariosService //private dataViewService: DataViewService
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    // this.data$ = this.dataViewService.getData((params: Parametros) =>
-    //   this.funcionariosService.getAll(params)
-    // );
+  ngOnInit() {}
+
+  sort(sort: Sort) {
+    this.ordenacao.emit({ ativo: sort.active, direcao: sort.direction });
   }
 
-  sortData(sort: Sort) {
-    // this.dataViewService.changeSort(sort as Ordenacao);
+  page(page: PageEvent) {
+    this.paginacao.emit({ pagina: page.pageIndex, tamanho: page.pageSize });
   }
 
   setColor(idade: number) {

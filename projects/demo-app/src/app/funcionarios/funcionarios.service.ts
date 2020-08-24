@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { Parametros, DataViewResult } from 'data-view';
+import { Parametros, Data } from 'core';
 
 import { Funcionario } from './funcionarios';
 import { FUNCIONARIOS_MOCK_DATA } from './funcionarios-mock-data';
@@ -14,14 +14,14 @@ import { FUNCIONARIOS_MOCK_DATA } from './funcionarios-mock-data';
 export class FuncionariosService {
   constructor() {}
 
-  getAll(params?: Parametros): Observable<DataViewResult<Funcionario>> {
+  getAll(params?: Parametros): Observable<Data<Funcionario>> {
     // Pesquisa
     let searchedData = JSON.parse(
       JSON.stringify(FUNCIONARIOS_MOCK_DATA)
     ) as Funcionario[];
 
-    if (params?.search) {
-      const search = params.search.toLowerCase();
+    if (params?.pesquisa) {
+      const search = params.pesquisa.toLowerCase();
       searchedData = searchedData.filter(
         (funcionario) =>
           funcionario.email.toLowerCase().includes(search) ||
@@ -34,7 +34,7 @@ export class FuncionariosService {
     // Sort
     let sortedData = searchedData;
 
-    switch (params?.sort?.active) {
+    switch (params?.ordenacao?.ativo) {
       case 'id':
         sortedData.sort((a, b) => a.id - b.id);
         break;
@@ -63,22 +63,22 @@ export class FuncionariosService {
         break;
     }
 
-    if (params?.sort?.direction === 'desc') {
+    if (params?.ordenacao?.direcao === 'desc') {
       sortedData.reverse();
     }
 
     // Filter
     let filteredData = sortedData;
 
-    if (params?.filter?.idadeMax) {
+    if (params?.filtro?.idadeMax) {
       filteredData = filteredData.filter(
-        (p) => p.idade <= params.filter.idadeMax
+        (p) => p.idade <= params.filtro.idadeMax
       );
     }
 
     // Pagination
-    const pageIndex = params?.pagination?.pageIndex || 0;
-    const pageSize = params?.pagination?.pageSize || 50;
+    const pageIndex = params?.paginacao?.pagina || 0;
+    const pageSize = params?.paginacao?.tamanho || 50;
 
     const start = pageIndex * pageSize;
     const end = start + pageSize;
@@ -86,7 +86,10 @@ export class FuncionariosService {
     return of(filteredData).pipe(
       delay(this.getRandomNumber(500, 1500)),
       map((data: any[]) => data.slice(start, end)),
-      map((data) => ({ data, length: filteredData.length }))
+      map(
+        (dados) =>
+          ({ dados, registros: filteredData.length } as Data<Funcionario>)
+      )
     );
   }
 

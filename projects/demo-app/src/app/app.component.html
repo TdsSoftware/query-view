@@ -1,14 +1,8 @@
-<div [class.dark-theme]="darkTheme$ | async">
-    <mat-drawer-container autosize>
-
-        <div fxLayout="column">
-
-            <app-toolbar></app-toolbar>
-
-            <div fxFlex>
-                <router-outlet></router-outlet>
-            </div>
+<mat-drawer-container [class.dark-theme]="darkTheme$ | async">
+    <mat-drawer-content fxLayout="column">
+        <app-toolbar></app-toolbar>
+        <div id="container" fxFlex>
+            <router-outlet></router-outlet>
         </div>
-
-    </mat-drawer-container>
-</div>
+    </mat-drawer-content>
+</mat-drawer-container>
