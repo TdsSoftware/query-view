@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap, switchMap, startWith, debounceTime } from 'rxjs/operators';
+
 import { Paginacao, Filtro, Parametros, Ordenacao, Data } from 'core';
-import { tap, switchMap, startWith } from 'rxjs/operators';
 
 @Injectable()
 export class QueryViewService {
@@ -38,6 +39,10 @@ export class QueryViewService {
   pesquisar(pesquisa: string) {
     const paginacao = this.primeiraPagina();
     this.parametros.next({ ...this.parametros.value, pesquisa, paginacao });
+  }
+
+  refresh() {
+    this.parametros.next(this.parametros.value);
   }
 
   private primeiraPagina() {

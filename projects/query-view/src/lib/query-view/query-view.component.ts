@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Type } from '@angular/core';
-import { of } from 'rxjs';
+
 import { QueryViewService } from '../query-view.service';
+import { FilterService } from '../filter/filter.service';
 
 @Component({
   selector: 'tds-query-view',
@@ -14,11 +15,13 @@ export class QueryViewComponent implements OnInit {
   @Input() margin: string;
   @Input() elevation: number;
 
-  filterMode$ = of('side');
-  filterOpened$ = of(false);
   loading$ = this.queryViewService.loading$;
+  filter$ = this.filterService.filter$;
 
-  constructor(private queryViewService: QueryViewService) {}
+  constructor(
+    private queryViewService: QueryViewService,
+    private filterService: FilterService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -26,5 +29,7 @@ export class QueryViewComponent implements OnInit {
     return this.margin ? `mat-elevation-z${this.elevation}` : null;
   }
 
-  close() {}
+  close() {
+    this.filterService.fechar();
+  }
 }

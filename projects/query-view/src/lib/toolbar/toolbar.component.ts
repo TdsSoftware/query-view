@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Parametros } from 'core';
 import { QueryViewService } from '../query-view.service';
+import { FilterService } from '../filter/filter.service';
 
 interface FilterBadge {
   numFilters: number;
@@ -20,7 +21,10 @@ export class ToolbarComponent implements OnInit {
   @Input() titulo: string;
   @Input() filter: boolean;
 
-  constructor(private queryViewService: QueryViewService) {}
+  constructor(
+    private queryViewService: QueryViewService,
+    private filterService: FilterService
+  ) {}
 
   filterBadge$: Observable<FilterBadge>;
 
@@ -37,10 +41,10 @@ export class ToolbarComponent implements OnInit {
   }
 
   refresh() {
-    //this.dataService.refreshData();
+    this.queryViewService.refresh();
   }
 
-  toggleFilter() {
-    //this.interfaceService.toggleFilter();
+  toggle() {
+    this.filterService.alternar();
   }
 }
