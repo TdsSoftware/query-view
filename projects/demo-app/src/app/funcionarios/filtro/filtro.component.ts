@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
-import { DataViewStateService } from 'data-view';
+import { QueryViewService } from 'query-view';
 
 @Component({
   selector: 'app-filtro',
@@ -10,36 +10,29 @@ import { DataViewStateService } from 'data-view';
   styleUrls: ['./filtro.component.scss'],
 })
 export class FiltroComponent implements OnInit {
-  form: FormGroup;
-  idadeMax: FormControl;
+  idadeMax = new FormControl(60);
+  form = new FormGroup({ idadeMax: this.idadeMax });
   subscription = new Subscription();
 
-  constructor(private dataViewState: DataViewStateService) {}
+  constructor(private queryViewService: QueryViewService) {}
 
   ngOnInit(): void {
-    this.idadeMax = new FormControl(60);
-
-    this.form = new FormGroup({
-      idadeMax: this.idadeMax,
-    });
+    this.subscription.add(
+      this.form.valueChanges.subscribe((values) => this.submit(values))
+    );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  submit() {
-    const value = this.handleFormValues(this.form.value);
-    this.dataViewState.changeFilter(value);
-  }
-
-  handleFormValues(values: any): any {
+  submit(values: any) {
     const filter: any = {};
 
     if (values.idadeMax != 60) {
       filter.idadeMax = values.idadeMax;
     }
 
-    return Object.keys(filter).length ? filter : null;
+    this.queryViewService.filtrar(Object.keys(filter).length ? filter : null);
   }
 }

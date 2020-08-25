@@ -1,13 +1,5 @@
-:host {
-  display: block;
-  height: 100%;
-}
-
-#container {
-  padding: 24px;
-  overflow: auto;
-}
-
 form {
-  height: 100%;
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
 }
