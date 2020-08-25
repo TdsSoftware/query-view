@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
-import { Paginacao, Filtro, Parametros, Ordenacao } from 'core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Paginacao, Filtro, Parametros, Ordenacao, Data } from 'core';
+import { tap, switchMap, startWith } from 'rxjs/operators';
 
 @Injectable()
 export class QueryViewService {
   private parametros = new BehaviorSubject<Parametros>(null);
   parametros$ = this.parametros.asObservable();
+  private loading = new BehaviorSubject<boolean>(true);
+  loading$ = this.loading.asObservable();
+
   constructor() {}
+
+  dataSource$<T>(fnLoad: (param: Parametros) => Observable<Data<T>>) {
+    return this.parametros$.pipe(
+      tap(() => this.loading.next(true)),
+      switchMap((parametros) => fnLoad(parametros)),
+      tap(() => this.loading.next(false)),
+      startWith({ dados: null, registros: 0 })
+    );
+  }
 
   paginar(paginacao: Paginacao) {
     this.parametros.next({ ...this.parametros.value, paginacao });

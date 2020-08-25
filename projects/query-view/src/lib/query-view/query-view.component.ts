@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Type } from '@angular/core';
 import { of } from 'rxjs';
+import { QueryViewService } from '../query-view.service';
 
 @Component({
   selector: 'tds-query-view',
@@ -12,9 +13,12 @@ export class QueryViewComponent implements OnInit {
   @Input() filter: Type<any>;
   @Input() margin: string;
   @Input() elevation: number;
-  @Input() loading: boolean = false;
 
-  constructor() {}
+  filterMode$ = of('side');
+  filterOpened$ = of(false);
+  loading$ = this.queryViewService.loading$;
+
+  constructor(private queryViewService: QueryViewService) {}
 
   ngOnInit(): void {}
 
@@ -23,7 +27,4 @@ export class QueryViewComponent implements OnInit {
   }
 
   close() {}
-
-  filterMode$ = of('side');
-  filterOpened$ = of(false);
 }
