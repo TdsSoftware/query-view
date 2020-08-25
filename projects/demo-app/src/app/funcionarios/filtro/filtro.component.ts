@@ -12,6 +12,7 @@ import { QueryViewService } from 'query-view';
 export class FiltroComponent implements OnInit {
   idadeMax = new FormControl(60);
   form = new FormGroup({ idadeMax: this.idadeMax });
+  initial = this.form.value;
   subscription = new Subscription();
 
   constructor(private queryViewService: QueryViewService) {}
@@ -24,6 +25,10 @@ export class FiltroComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  reiniciar() {
+    this.form.reset(this.initial);
   }
 
   submit(values: any) {

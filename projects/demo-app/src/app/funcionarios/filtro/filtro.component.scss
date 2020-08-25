@@ -3,3 +3,9 @@ form {
   padding: 16px;
   overflow: auto;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

@@ -2,7 +2,18 @@
     Filtros
 </mat-toolbar>
 
+<mat-divider></mat-divider>
+
 <form [formGroup]="form" fxLayout="column">
     <h3>Idade Máxima</h3>
-    <mat-slider fxFlex min="18" max="60" thumbLabel [formControl]="idadeMax"></mat-slider>
+    <mat-slider min="18" max="60" thumbLabel [formControl]="idadeMax"></mat-slider>
+    <div fxFlex></div>
 </form>
+
+<mat-divider></mat-divider>
+
+<mat-toolbar>
+    <button mat-button (click)="reiniciar()" [disabled]="form.pristine">
+        Reiniciar
+    </button>
+</mat-toolbar>
