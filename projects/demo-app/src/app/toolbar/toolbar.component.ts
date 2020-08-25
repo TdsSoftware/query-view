@@ -8,8 +8,6 @@ import { AppSettingsService } from '../app-settings.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  darkTheme$ = this.appSettings.darkTheme$;
-
   constructor(private appSettings: AppSettingsService) {}
 
   ngOnInit(): void {}
