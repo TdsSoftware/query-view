@@ -11,8 +11,8 @@ import { Paginacao, Ordenacao } from 'core';
   styleUrls: ['./tabela.component.scss'],
 })
 export class TabelaComponent implements OnInit {
-  @Input() funcionarios: Funcionario[];
-  @Input() registros: number;
+  @Input() funcionarios: Funcionario[] = [];
+  @Input() registros: number = 0;
   @Output() paginacao = new EventEmitter<Paginacao>();
   @Output() ordenacao = new EventEmitter<Ordenacao>();
 

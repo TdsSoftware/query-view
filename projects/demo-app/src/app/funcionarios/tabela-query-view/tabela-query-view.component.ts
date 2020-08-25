@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { switchMap } from 'rxjs/operators';
+import { switchMap, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { QueryViewService } from 'query-view';
@@ -24,7 +24,8 @@ export class TabelaQueryViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource$ = this.queryViewService.parametros$.pipe(
-      switchMap((parametros) => this.funcionariosService.getAll(parametros))
+      switchMap((parametros) => this.funcionariosService.getAll(parametros)),
+      startWith({ dados: null, registros: 0 })
     );
   }
 
