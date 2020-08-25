@@ -7,9 +7,7 @@ import { Paginacao, Filtro, Parametros, Ordenacao } from 'core';
 export class QueryViewService {
   private parametros = new BehaviorSubject<Parametros>(null);
   parametros$ = this.parametros.asObservable();
-  constructor() {
-    this.parametros$.subscribe((x) => console.log(x));
-  }
+  constructor() {}
 
   paginar(paginacao: Paginacao) {
     this.parametros.next({ ...this.parametros.value, paginacao });

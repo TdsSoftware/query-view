@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+#table-container {
+  flex: 1;
+  overflow: auto;
+}
+
 table {
   width: 100%;
   min-width: 700px;
@@ -12,9 +17,4 @@ table {
   background-color: black;
   border-radius: 4px;
   padding: 4px;
-}
-
-#table-container {
-  flex: auto;
-  overflow: auto;
 }

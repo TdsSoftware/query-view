@@ -1,8 +1,8 @@
-<mat-drawer-container [class.dark-theme]="darkTheme$ | async">
-    <mat-drawer-content fxLayout="column">
+<mat-sidenav-container [class.dark-theme]="darkTheme$ | async">
+    <mat-sidenav-content>
         <app-toolbar></app-toolbar>
-        <div id="container" fxFlex>
+        <div id="container">
             <router-outlet></router-outlet>
         </div>
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

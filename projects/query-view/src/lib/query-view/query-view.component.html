@@ -5,14 +5,14 @@
         <tds-filter [filter]="filter"></tds-filter>
     </mat-drawer>
 
-    <mat-drawer-content [style.padding]="margin" fxLayout="column">
-
+    <mat-drawer-content [style.padding]="margin">
         <tds-toolbar [titulo]="title" [ngClass]="getElevation()" [filter]="filter != null"></tds-toolbar>
 
-        <div fxFlex id="table-container" [style.margin-top]="margin" [ngClass]="getElevation()">
+        <div id="content-container" [style.margin-top]="margin" [ngClass]="getElevation()">
             <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-            <tds-table fxFlex [table]="table"></tds-table>
+            <tds-table [table]="table"></tds-table>
         </div>
+
     </mat-drawer-content>
 
 </mat-drawer-container>

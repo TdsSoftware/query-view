@@ -1,6 +1,6 @@
 <form [formGroup]="form" #ngForm="ngForm" fxLayout="column" (ngSubmit)="submit()">
 
-    <div id="container" fxFlex>
+    <div id="container">
         <div fxLayout="column">
             <h3>Idade Máxima</h3>
             <mat-slider min="18" max="60" thumbLabel [formControl]="idadeMax"></mat-slider>

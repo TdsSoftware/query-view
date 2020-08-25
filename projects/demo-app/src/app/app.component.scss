@@ -1,12 +1,13 @@
-:host {
-  display: block;
-  height: 100vh;
+.mat-sidenav-container {
+  height: 100%;
+}
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
 }
 
 #container {
+  flex: auto;
   overflow: auto;
-}
-
-.mat-drawer-container {
-  height: 100%;
 }

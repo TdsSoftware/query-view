@@ -1,4 +1,4 @@
 <ng-container *ngIf="dataSource$ | async as dataSource">
-    <app-tabela fxFlex [funcionarios]="dataSource.dados" [registros]="dataSource.registros" (ordenacao)="sort($event)"
+    <app-tabela [funcionarios]="dataSource.dados" [registros]="dataSource.registros" (ordenacao)="sort($event)"
         (paginacao)="page($event)"></app-tabela>
 </ng-container>
