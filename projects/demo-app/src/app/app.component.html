@@ -1,8 +1,10 @@
-<mat-sidenav-container [class.dark-theme]="darkTheme$ | async">
-    <mat-sidenav-content>
-        <app-toolbar></app-toolbar>
-        <div id="container">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<div id="container" [class.dark-theme]="darkTheme$ | async">
+    <mat-sidenav-container>
+        <mat-sidenav-content>
+            <app-toolbar></app-toolbar>
+            <div id="container">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
