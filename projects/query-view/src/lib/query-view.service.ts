@@ -17,6 +17,7 @@ export class QueryViewService {
   dataSource$<T>(fnLoad: (param: Parametros) => Observable<Data<T>>) {
     return this.parametros$.pipe(
       tap(() => this.loading.next(true)),
+      debounceTime(300),
       switchMap((parametros) => fnLoad(parametros)),
       tap(() => this.loading.next(false)),
       startWith({ dados: null, registros: 0 })
