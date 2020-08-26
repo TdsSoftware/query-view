@@ -28,7 +28,13 @@ export class QueryViewService {
     this.parametros.next({ ...this.parametros.value, paginacao });
   }
 
-  ordenar(ordenacao: Ordenacao) {
+  ordenar(ordenacao: Partial<Ordenacao>) {
+    ordenacao = ordenacao.direcao ? ordenacao : null;
+
+    if (ordenacao) {
+      ordenacao.direcao = ordenacao.direcao ? ordenacao.direcao : 'asc';
+    }
+
     this.parametros.next({ ...this.parametros.value, ordenacao });
   }
 

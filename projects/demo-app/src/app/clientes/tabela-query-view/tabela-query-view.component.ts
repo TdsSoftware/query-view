@@ -16,7 +16,8 @@ import { ClientesService } from '../clientes.service';
 })
 export class TabelaQueryViewComponent implements OnInit {
   dataSource$: Observable<Data<Cliente>>;
-  pageSize$: Observable<number>;
+  pageSize = 4;
+  active = 'pais';
 
   constructor(
     private clientesService: ClientesService,
@@ -24,11 +25,8 @@ export class TabelaQueryViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.queryViewService.paginar({ tamanho: 4 });
-
-    this.pageSize$ = this.queryViewService.parametros$.pipe(
-      map((param) => param.paginacao.tamanho)
-    );
+    this.queryViewService.paginar({ tamanho: this.pageSize });
+    this.queryViewService.ordenar({ ativo: this.active });
 
     this.dataSource$ = this.queryViewService.dataSource$((params) =>
       this.clientesService.getAll(params)

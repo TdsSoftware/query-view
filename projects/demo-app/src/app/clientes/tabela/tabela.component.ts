@@ -15,6 +15,8 @@ export class TabelaComponent implements OnInit {
   @Input() clientes: Cliente[] = [];
   @Input() registros: number = 0;
   @Input() tamanho = 50;
+  @Input() sortActive: string;
+  @Input() sortDirection: string;
   @Input() height = 'unset';
   @Output() paginacao = new EventEmitter<Paginacao>();
   @Output() ordenacao = new EventEmitter<Ordenacao>();

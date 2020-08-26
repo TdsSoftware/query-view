@@ -1,4 +1,12 @@
 <ng-container *ngIf="dataSource$ | async as dataSource">
-    <app-tabela [clientes]="dataSource.dados" [registros]="dataSource.registros" (paginacao)="page($event)"
-        (ordenacao)="sort($event)" [tamanho]="pageSize$ | async" height="248px"></app-tabela>
+  <app-tabela
+    [clientes]="dataSource.dados"
+    [registros]="dataSource.registros"
+    [tamanho]="pageSize"
+    [sortActive]="active"
+    [sortDirection]="direction"
+    height="248px"
+    (paginacao)="page($event)"
+    (ordenacao)="sort($event)"
+  ></app-tabela>
 </ng-container>

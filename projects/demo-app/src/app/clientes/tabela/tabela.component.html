@@ -1,5 +1,6 @@
 <div [style.height]="height">
-    <table mat-table [dataSource]="clientes" matSort (matSortChange)="sort($event)">
+    <table mat-table [dataSource]="clientes" matSort (matSortChange)="sort($event)" [matSortActive]="sortActive"
+        [matSortDirection]="sortDirection">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>

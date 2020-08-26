@@ -1,7 +1,7 @@
 export interface Parametros {
   paginacao?: Partial<Paginacao>;
   filtro?: Filtro;
-  ordenacao?: Ordenacao;
+  ordenacao?: Partial<Ordenacao>;
   pesquisa?: string;
 }
 
