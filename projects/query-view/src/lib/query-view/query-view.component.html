@@ -1,19 +1,17 @@
 <mat-drawer-container (backdropClick)="close()">
-
     <mat-drawer *ngIf="filter" mode="side" [opened]="filter$ | async" position="end" disableClose>
         <tds-filter [filter]="filter"></tds-filter>
     </mat-drawer>
 
     <mat-drawer-content>
-
         <tds-toolbar [style.margin]="margin" [titulo]="title" [ngClass]="getElevation()" [filter]="filter != null">
         </tds-toolbar>
+
+        <!-- <mat-divider *ngIf="!margin"></mat-divider> -->
 
         <div id="content-container" [style.margin]="margin" [style.margin-top]="0" [ngClass]="getElevation()">
             <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
             <tds-table [table]="table"></tds-table>
         </div>
-
     </mat-drawer-content>
-
 </mat-drawer-container>

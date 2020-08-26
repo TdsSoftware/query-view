@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { QueryViewService } from 'query-view';
 
@@ -32,6 +32,8 @@ export class FiltroComponent implements OnInit {
     moeda: this.moeda,
   });
 
+  inicial = this.form.value;
+
   constructor(
     private queryViewService: QueryViewService,
     private clienteService: ClientesService
@@ -51,7 +53,7 @@ export class FiltroComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  submit() {
     const filter: { [key: string]: any } = {};
 
     if (this.departamento.value) {
@@ -73,5 +75,10 @@ export class FiltroComponent implements OnInit {
     return list.filter(
       (option) => option.toLowerCase().indexOf(value.toLowerCase()) === 0
     );
+  }
+
+  reset() {
+    this.form.setValue(this.inicial);
+    this.submit();
   }
 }

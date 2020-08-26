@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { Data, Ordenacao, Paginacao } from 'core';
 import { QueryViewService } from 'query-view';
@@ -18,6 +17,7 @@ export class TabelaQueryViewComponent implements OnInit {
   dataSource$: Observable<Data<Cliente>>;
   pageSize = 4;
   active = 'pais';
+  direction: 'desc' = 'desc';
 
   constructor(
     private clientesService: ClientesService,
@@ -26,7 +26,10 @@ export class TabelaQueryViewComponent implements OnInit {
 
   ngOnInit() {
     this.queryViewService.paginar({ tamanho: this.pageSize });
-    this.queryViewService.ordenar({ ativo: this.active });
+    this.queryViewService.ordenar({
+      ativo: this.active,
+      direcao: this.direction,
+    });
 
     this.dataSource$ = this.queryViewService.dataSource$((params) =>
       this.clientesService.getAll(params)

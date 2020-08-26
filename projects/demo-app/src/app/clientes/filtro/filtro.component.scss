@@ -1,13 +1,22 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
 form {
-  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   overflow: auto;
 }
 
 #container {
+  flex: 1;
   padding: 1.5em;
+}
+
+#button-container {
+  height: 56px;
+  padding: 12px;
 }

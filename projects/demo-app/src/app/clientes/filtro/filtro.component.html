@@ -1,6 +1,12 @@
-<form [formGroup]="form" fxLayout="column" (ngSubmit)="onSubmit()">
+<mat-toolbar>
+    <h3>Refinamento</h3>
+</mat-toolbar>
 
-    <div id="container" fxFlex fxLayout="column">
+<mat-divider></mat-divider>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div id="container" fxLayout="column">
 
         <mat-form-field fxFlex>
             <mat-label>País</mat-label>
@@ -32,6 +38,21 @@
             </mat-autocomplete>
         </mat-form-field>
 
+        <div fxFlex></div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div fxLayout id="button-container">
+        <button mat-button type="reset" (click)="reset()" [disabled]="form.pristine">
+            Reiniciar
+        </button>
+
+        <div fxFlex></div>
+
+        <button mat-button color="primary" (click)="submit()" type="submit">
+            Filtrar
+        </button>
     </div>
 
 </form>
