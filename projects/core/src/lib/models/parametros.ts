@@ -1,5 +1,5 @@
 export interface Parametros {
-  paginacao?: Paginacao;
+  paginacao?: Partial<Paginacao>;
   filtro?: Filtro;
   ordenacao?: Ordenacao;
   pesquisa?: string;

@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { DataViewStateService } from 'data-view';
+import { QueryViewService } from 'query-view';
 
 import { ClientesService } from '../clientes.service';
 
@@ -14,8 +14,6 @@ import { ClientesService } from '../clientes.service';
   styleUrls: ['./filtro.component.scss'],
 })
 export class FiltroComponent implements OnInit {
-  form: FormGroup;
-
   departamento = new FormControl('');
   departamentos = this.clienteService.getDepartamentos();
   departamentos$: Observable<string[]>;
@@ -28,18 +26,18 @@ export class FiltroComponent implements OnInit {
   moedas = this.clienteService.getMoedas();
   moedas$: Observable<string[]>;
 
+  form = new FormGroup({
+    departamento: this.departamento,
+    pais: this.pais,
+    moeda: this.moeda,
+  });
+
   constructor(
-    private dataViewStateService: DataViewStateService,
+    private queryViewService: QueryViewService,
     private clienteService: ClientesService
   ) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      departamento: this.departamento,
-      pais: this.pais,
-      moeda: this.moeda,
-    });
-
     this.departamentos$ = this.departamento.valueChanges.pipe(
       map((value) => this.filterList(this.departamentos, value))
     );
@@ -68,7 +66,7 @@ export class FiltroComponent implements OnInit {
       filter.moeda = this.moeda.value;
     }
 
-    this.dataViewStateService.changeFilter(filter);
+    this.queryViewService.filtrar(filter);
   }
 
   filterList(list: string[], value: string): string[] {

@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
 
-import { Observable } from 'rxjs';
-import { Parametros, Ordenacao, DataViewService } from 'data-view';
+import { Paginacao, Ordenacao } from 'core';
 
-import { ClientesService } from '../clientes.service';
 import { Cliente } from '../clientes';
 
 @Component({
@@ -13,21 +12,24 @@ import { Cliente } from '../clientes';
   styleUrls: ['./tabela.component.scss'],
 })
 export class TabelaComponent implements OnInit {
+  @Input() clientes: Cliente[] = [];
+  @Input() registros: number = 0;
+  @Input() tamanho = 50;
+  @Input() height = 'unset';
+  @Output() paginacao = new EventEmitter<Paginacao>();
+  @Output() ordenacao = new EventEmitter<Ordenacao>();
+
   colunas: string[] = ['id', 'empresa', 'pais', 'moeda', 'departamento'];
-  data$: Observable<Cliente[]>;
 
-  constructor(
-    private clientesService: ClientesService,
-    private dataViewService: DataViewService
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.data$ = this.dataViewService.getData((params: Parametros) =>
-      this.clientesService.getAll(params)
-    );
+  ngOnInit() {}
+
+  sort(event: Sort) {
+    this.ordenacao.emit({ ativo: event.active, direcao: event.direction });
   }
 
-  sortData(sort: Sort) {
-    this.dataViewService.changeSort(sort as Ordenacao);
+  page(page: PageEvent) {
+    this.paginacao.emit({ pagina: page.pageIndex, tamanho: page.pageSize });
   }
 }

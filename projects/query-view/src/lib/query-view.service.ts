@@ -24,7 +24,7 @@ export class QueryViewService {
     );
   }
 
-  paginar(paginacao: Paginacao) {
+  paginar(paginacao: Partial<Paginacao>) {
     this.parametros.next({ ...this.parametros.value, paginacao });
   }
 

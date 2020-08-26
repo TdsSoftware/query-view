@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { Parametros, DataViewResult } from 'data-view';
+import { Data, Parametros } from 'core';
 
 import { Cliente } from './clientes';
 import { CLIENTES_MOCK_DATA } from './clientes-mock-data';
@@ -26,14 +26,14 @@ export class ClientesService {
     return [...new Set(CLIENTES_MOCK_DATA.map((x) => x.moeda))].sort();
   }
 
-  getAll(params?: Parametros): Observable<DataViewResult<Cliente>> {
+  getAll(params?: Parametros): Observable<Data<Cliente>> {
     // Pesquisa
     let searchedData = JSON.parse(
       JSON.stringify(CLIENTES_MOCK_DATA)
     ) as Cliente[];
 
-    if (params?.search) {
-      const search = params.search.toLowerCase();
+    if (params?.pesquisa) {
+      const search = params.pesquisa.toLowerCase();
       searchedData = searchedData.filter(
         (cliente) =>
           cliente.id.toString().includes(search) ||
@@ -44,7 +44,7 @@ export class ClientesService {
     // Sort
     let sortedData = searchedData;
 
-    switch (params?.sort?.active) {
+    switch (params?.ordenacao?.ativo) {
       case 'id':
         sortedData.sort((a, b) => a.id - b.id);
         break;
@@ -65,30 +65,30 @@ export class ClientesService {
         break;
     }
 
-    if (params?.sort?.direction === 'desc') {
+    if (params?.ordenacao?.direcao === 'desc') {
       sortedData.reverse();
     }
 
     // Filter
     let filteredData = sortedData;
 
-    if (params?.filter?.departamento) {
+    if (params?.filtro?.departamento) {
       filteredData = filteredData.filter(
-        (c) => c.departamento == params.filter.departamento
+        (c) => c.departamento == params.filtro.departamento
       );
     }
 
-    if (params?.filter?.pais) {
-      filteredData = filteredData.filter((c) => c.pais == params.filter.pais);
+    if (params?.filtro?.pais) {
+      filteredData = filteredData.filter((c) => c.pais == params.filtro.pais);
     }
 
-    if (params?.filter?.moeda) {
-      filteredData = filteredData.filter((c) => c.moeda == params.filter.moeda);
+    if (params?.filtro?.moeda) {
+      filteredData = filteredData.filter((c) => c.moeda == params.filtro.moeda);
     }
 
     // Pagination
-    const pageIndex = params?.pagination?.pageIndex || 0;
-    const pageSize = params?.pagination?.pageSize || 50;
+    const pageIndex = params?.paginacao?.pagina || 0;
+    const pageSize = params?.paginacao?.tamanho || 50;
 
     const start = pageIndex * pageSize;
     const end = start + pageSize;
@@ -96,7 +96,7 @@ export class ClientesService {
     return of(filteredData).pipe(
       delay(500),
       map((data: any[]) => data.slice(start, end)),
-      map((data) => ({ data, length: filteredData.length }))
+      map((dados) => ({ dados, registros: filteredData.length }))
     );
   }
 }
