@@ -25,13 +25,15 @@ import { QueryViewModule } from  '@tds-software/query-view';
 })
 ```
 
+
 In your component template:
 
 ```javascript
 <tds-query-view  [table]="table-component"></tds-query-view>
 ```
 
-Will have acess to `QueryViewService` to page, sort filter and search.
+
+Use `QueryViewService` to manage pagination, sorting, filtering and searching.
 
 ```javascript
 constructor(
