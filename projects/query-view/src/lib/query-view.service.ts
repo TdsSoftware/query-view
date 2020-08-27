@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, switchMap, startWith, debounceTime } from 'rxjs/operators';
+import { tap, switchMap, startWith } from 'rxjs/operators';
 
 import { Paginacao, Filtro, Parametros, Ordenacao, Data } from 'core';
 
@@ -17,7 +17,6 @@ export class QueryViewService {
   dataSource$<T>(fnLoad: (param: Parametros) => Observable<Data<T>>) {
     return this.parametros$.pipe(
       tap(() => this.loading.next(true)),
-      debounceTime(300),
       switchMap((parametros) => fnLoad(parametros)),
       tap(() => this.loading.next(false)),
       startWith({ dados: null, registros: 0 })
