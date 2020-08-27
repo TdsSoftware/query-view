@@ -37,14 +37,14 @@ Use `QueryViewService` to manage pagination, sorting, filtering and searching.
 
 ```javascript
 constructor(
-	private  yourService: YourService,
-	private  queryViewService: QueryViewService
+  private  yourService: YourService,
+  private  queryViewService: QueryViewService
 ) {}
 
 ngOnInit(): void {
-	this.dataSource$ = this.queryViewService.dataSource$((params) =>
-		this.usuariosService.getAll(params)
-	);
+  this.dataSource$ = this.queryViewService.dataSource$((params) =>
+    this.usuariosService.getAll(params)
+  );
 }
 ```
 
