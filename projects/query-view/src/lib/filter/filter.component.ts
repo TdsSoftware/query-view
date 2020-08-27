@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Type } from '@angular/core';
 
-import { RenderService, FilterDirective } from 'core';
+import { FilterDirective } from './filter.directive';
+import { RenderService } from '../render.service';
 
 @Component({
   selector: 'tds-filter',

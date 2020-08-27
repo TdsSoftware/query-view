@@ -2,8 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 
+import { Paginacao, Ordenacao } from 'query-view';
+
 import { Funcionario } from '../funcionarios';
-import { Paginacao, Ordenacao } from 'core';
 
 @Component({
   selector: 'app-tabela',

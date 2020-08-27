@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Type, ViewChild } from '@angular/core';
 
-import { RenderService, TableDirective } from 'core';
+import { TableDirective } from './table.directive';
+import { RenderService } from '../render.service';
 
 @Component({
   selector: 'tds-table',

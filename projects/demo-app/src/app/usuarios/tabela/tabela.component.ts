@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
-import { Ordenacao } from 'core';
+import { Ordenacao } from 'query-view';
 
 import { Usuario } from '../usuarios';
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, switchMap, startWith } from 'rxjs/operators';
 
-import { Paginacao, Filtro, Parametros, Ordenacao, Data } from 'core';
+import { Parametros, Data, Paginacao, Ordenacao, Filtro } from './query-view';
 
 @Injectable()
 export class QueryViewService {

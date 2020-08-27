@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { QueryViewService } from 'query-view';
-import { Data, Ordenacao } from 'core';
+import { QueryViewService, Ordenacao, Data } from 'query-view';
 
 import { UsuariosService } from '../usuarios.service';
 import { Usuario } from '../usuarios';

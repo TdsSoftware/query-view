@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { Data, Parametros } from 'core';
+import { Parametros, Data } from 'query-view';
 
 import { Cliente } from './clientes';
 import { CLIENTES_MOCK_DATA } from './clientes-mock-data';

@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Parametros } from 'core';
+import { Parametros } from '../query-view';
+
 import { QueryViewService } from '../query-view.service';
 import { FilterService } from '../filter/filter.service';
 
