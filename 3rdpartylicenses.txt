@@ -91,7 +91,7 @@ MIT
 @angular/router
 MIT
 
-@tds-software/data-view
+@tds-software/query-view
 
 css-loader
 MIT
@@ -323,7 +323,7 @@ Apache-2.0
  
 
 
-tds-data-view
+tds-library
 
 zone.js
 MIT
