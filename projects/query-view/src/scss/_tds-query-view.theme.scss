@@ -1,0 +1,5 @@
+@import "./search.component.theme";
+
+@mixin tds-query-view-theme($theme) {
+  @include tds-search-theme($theme);
+}
