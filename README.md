@@ -28,7 +28,7 @@ import { QueryViewModule } from  '@tds-software/query-view';
 
 In your component template:
 
-```javascript
+```html
 <tds-query-view  [table]="table-component"></tds-query-view>
 ```
 
