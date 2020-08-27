@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
-import { Observable } from 'rxjs';
-import { DataViewService } from 'data-view';
+import { Ordenacao } from 'core';
 
-import { UsuariosService } from '../usuarios.service';
 import { Usuario } from '../usuarios';
 
 @Component({
@@ -12,17 +11,17 @@ import { Usuario } from '../usuarios';
   styleUrls: ['./tabela.component.scss'],
 })
 export class TabelaComponent implements OnInit {
-  data$: Observable<Usuario[]>;
+  @Input() usuarios: Usuario[];
+  @Input() registros: number;
+  @Output() ordenacao = new EventEmitter<Ordenacao>();
+
   displayedColumns = ['id', 'avatar', 'username', 'email'];
 
-  constructor(
-    private dataViewService: DataViewService,
-    private usuariosService: UsuariosService
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.data$ = this.dataViewService.getData<Usuario>((params) =>
-      this.usuariosService.getAll(params)
-    );
+  ngOnInit(): void {}
+
+  sort(event: Sort) {
+    this.ordenacao.emit({ ativo: event.active, direcao: event.direction });
   }
 }

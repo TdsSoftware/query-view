@@ -1,0 +1,4 @@
+<ng-container *ngIf="dataSource$ | async as dataSource">
+    <app-tabela [usuarios]="dataSource.dados" [registros]="dataSource.registros" (ordenacao)="sort($event)">
+    </app-tabela>
+</ng-container>

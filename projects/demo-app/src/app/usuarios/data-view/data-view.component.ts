@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TabelaComponent } from '../../usuarios/tabela/tabela.component';
-import { DataViewService } from 'data-view';
+import { QueryViewService } from 'query-view';
+import { TabelaQueryViewComponent } from '../tabela-query-view/tabela-query-view.component';
 
 @Component({
   selector: 'app-data-view',
   templateUrl: './data-view.component.html',
   styleUrls: ['./data-view.component.scss'],
-  providers: [DataViewService],
+  providers: [QueryViewService],
 })
 export class DataViewComponent implements OnInit {
-  table = TabelaComponent;
+  table = TabelaQueryViewComponent;
 
   constructor() {}
 
