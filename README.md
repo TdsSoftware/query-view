@@ -1,7 +1,7 @@
-[![npm version](https://badge.fury.io/js/%40tds-software%2Fdata-view.svg)](https://badge.fury.io/js/%40tds-software%2Fdata-view)
+[![npm version](https://badge.fury.io/js/%40tds-software%2Fquery-view.svg)](https://badge.fury.io/js/%40tds-software%2Fquery-view)
 
-# TdsDataView
+# Tds Library
 
-### Demo
+## Query View
 
-https://tdssoftware.github.io/tds-data-view/funcionarios
+https://tdssoftware.github.io/tds-query-view/funcionarios

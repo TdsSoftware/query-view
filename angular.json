@@ -3,44 +3,6 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "data-view": {
-      "projectType": "library",
-      "root": "projects/data-view",
-      "sourceRoot": "projects/data-view/src",
-      "prefix": "tds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/data-view/tsconfig.lib.json",
-            "project": "projects/data-view/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/data-view/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/data-view/src/test.ts",
-            "tsConfig": "projects/data-view/tsconfig.spec.json",
-            "karmaConfig": "projects/data-view/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/data-view/tsconfig.lib.json",
-              "projects/data-view/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "demo-app": {
       "projectType": "application",
       "schematics": {
@@ -164,7 +126,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/tds-data-view/"
+            "baseHref": "/tds-library/"
           }
         }
       }
@@ -240,9 +202,7 @@
               "projects/core/tsconfig.lib.json",
               "projects/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

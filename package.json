@@ -1,15 +1,15 @@
 {
-  "name": "tds-data-view",
+  "name": "tds-library",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build data-view --prod",
+    "build": "ng build query-view --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng deploy",
-    "publish": "npm run build && npm publish ./dist/data-view --access=public"
+    "publish": "npm run build && npm publish ./dist/query-view --access=public"
   },
   "private": true,
   "dependencies": {
