@@ -1,5 +1,5 @@
 <mat-drawer-container (backdropClick)="close()">
-    <mat-drawer *ngIf="filter" mode="side" [opened]="filter$ | async" position="end" disableClose>
+    <mat-drawer *ngIf="filter" [mode]="mode" [opened]="filter$ | async" position="end" disableClose>
         <tds-filter [filter]="filter"></tds-filter>
     </mat-drawer>
 
