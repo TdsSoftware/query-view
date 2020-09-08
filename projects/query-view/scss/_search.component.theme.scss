@@ -1,13 +1,9 @@
-@mixin tds-search-theme($theme, $typography: null) {
-  $background: map-get($theme, background);
+@mixin tds-search-theme($theme) {
   $foreground: map-get($theme, foreground);
 
   tds-search {
     input {
-      @if ($typography) {
-        @include mat-typography-level-to-styles($typography, title);
-      }
-      background: mat-color($background, app-bar);
+      background: transparent;
       color: mat-color($foreground, text);
     }
 
