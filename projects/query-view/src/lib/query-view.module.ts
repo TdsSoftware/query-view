@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export const MATERIAL_MODULE = [
   MatSidenavModule,
@@ -27,6 +28,7 @@ export const MATERIAL_MODULE = [
   MatProgressBarModule,
   MatBadgeModule,
   MatDividerModule,
+  MatTooltipModule,
 ];
 
 @NgModule({
