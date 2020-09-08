@@ -10,11 +10,11 @@ import { FilterService } from '../filter/filter.service';
   styleUrls: ['./query-view.component.scss'],
 })
 export class QueryViewComponent {
-  @Input() title: string = '';
-  @Input() table: Type<any>;
-  @Input() filter: Type<any>;
-  @Input() margin: string;
-  @Input() elevation: number;
+  @Input() titulo: string = '';
+  @Input() tabela: Type<any>;
+  @Input() filtro: Type<any>;
+  @Input() margem: string;
+  @Input() elevacao: number;
 
   @ViewChild(MatDrawerContainer, { read: ElementRef })
   matDrawerContainer: ElementRef;
@@ -37,7 +37,7 @@ export class QueryViewComponent {
   }
 
   getElevation() {
-    return this.margin ? `mat-elevation-z${this.elevation}` : null;
+    return this.margem ? `mat-elevation-z${this.elevacao}` : null;
   }
 
   close() {
