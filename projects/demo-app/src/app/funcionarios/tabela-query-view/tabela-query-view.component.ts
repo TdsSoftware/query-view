@@ -14,6 +14,7 @@ import { FuncionariosService } from '../funcionarios.service';
 })
 export class TabelaQueryViewComponent implements OnInit {
   dataSource$: Observable<Data<Funcionario>>;
+  pageSize: number = 25;
 
   constructor(
     private queryViewService: QueryViewService,
@@ -21,6 +22,8 @@ export class TabelaQueryViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.queryViewService.paginar({ tamanho: this.pageSize });
+
     this.dataSource$ = this.queryViewService.dataSource$((param) =>
       this.funcionariosService.getAll(param)
     );

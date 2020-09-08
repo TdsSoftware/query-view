@@ -14,6 +14,7 @@ import { Funcionario } from '../funcionarios';
 export class TabelaComponent implements OnInit {
   @Input() funcionarios: Funcionario[] = [];
   @Input() registros: number = 0;
+  @Input() pageSize: number = 10;
   @Output() paginacao = new EventEmitter<Paginacao>();
   @Output() ordenacao = new EventEmitter<Ordenacao>();
 
