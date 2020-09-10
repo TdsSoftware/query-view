@@ -1,13 +1,21 @@
 <tds-query-view [tabela]="table" titulo="Usuários" elevacao="1" margem="2em">
 
     <ng-container *ngIf="hasSelection" tds-toolbar-selection>
-        <button mat-icon-button matTooltip="Bloquear" (click)="bloquear()">
-            <mat-icon>lock</mat-icon>
-        </button>
+        <div fxLayout fxFlex>
+            <button mat-icon-button [disabled]="selection.length > 1" matTooltip="Enviar Email" (click)="sendEmail()">
+                <mat-icon>mail_outline</mat-icon>
+            </button>
 
-        <button mat-icon-button matTooltip="Desbloquear" (click)="desbloquear()">
-            <mat-icon>lock_open</mat-icon>
-        </button>
+            <mat-divider [vertical]="true"></mat-divider>
+
+            <button mat-icon-button matTooltip="Bloquear" (click)="bloquear()">
+                <mat-icon>lock</mat-icon>
+            </button>
+
+            <button mat-icon-button matTooltip="Desbloquear" (click)="desbloquear()">
+                <mat-icon>lock_open</mat-icon>
+            </button>
+        </div>
     </ng-container>
 
     <ng-container tds-toolbar-buttons>
