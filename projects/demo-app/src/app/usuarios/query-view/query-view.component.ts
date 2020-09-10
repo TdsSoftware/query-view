@@ -21,25 +21,9 @@ export class QueryViewComponent implements OnInit {
     return this.selectionService.selection.selected.length > 0;
   }
 
-  get selection() {
-    return this.selectionService.selection.selected;
-  }
-
   ngOnInit(): void {}
 
   onAddClick() {
     console.log('add record');
-  }
-
-  bloquear() {
-    console.log('bloquear');
-  }
-
-  desbloquear() {
-    console.log('desbloquear');
-  }
-
-  sendEmail() {
-    console.log('Email enviado');
   }
 }
