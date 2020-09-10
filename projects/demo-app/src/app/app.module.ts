@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { FuncionariosModule } from './funcionarios/funcionarios.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,12 @@ import { AppRoutingModule } from './app-routing.module';
     FlexLayoutModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { duration: '3000' },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

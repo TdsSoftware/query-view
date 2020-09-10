@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -30,6 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatAutocompleteModule,
     MatPaginatorModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}
