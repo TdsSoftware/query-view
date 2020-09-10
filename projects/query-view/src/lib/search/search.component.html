@@ -1,9 +1,15 @@
-<button mat-icon-button matTooltip="Pesquisar" (click)="focus()">
-    <mat-icon>search</mat-icon>
-</button>
+<ng-container *ngIf="pesquisa.value; then cancelar; else pesquisar"></ng-container>
+
+<ng-template #pesquisar>
+    <button mat-icon-button matTooltip="Pesquisar" (click)="focus()">
+        <mat-icon>search</mat-icon>
+    </button>
+</ng-template>
+
+<ng-template #cancelar>
+    <button mat-icon-button matTooltip="Cancelar" (click)="clear()">
+        <mat-icon>close</mat-icon>
+    </button>
+</ng-template>
 
 <input #input fxFlex [placeholder]="placeholder" [formControl]="pesquisa" (keydown.Escape)="clear()">
-
-<button mat-icon-button matTooltip="Cancelar" (click)="clear()" *ngIf="pesquisa.value">
-    <mat-icon>close</mat-icon>
-</button>

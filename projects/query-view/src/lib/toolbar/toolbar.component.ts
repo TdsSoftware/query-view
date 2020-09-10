@@ -21,6 +21,7 @@ interface FilterBadge {
 export class ToolbarComponent implements OnInit {
   @Input() titulo: string;
   @Input() filter: boolean;
+  @Input() search: boolean;
 
   constructor(
     private queryViewService: QueryViewService,

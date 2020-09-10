@@ -5,3 +5,7 @@
 .wrapper:not(:empty) + .default {
   display: none;
 }
+
+#titulo {
+  padding: 0 8px;
+}

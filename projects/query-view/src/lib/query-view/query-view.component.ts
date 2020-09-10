@@ -15,6 +15,7 @@ export class QueryViewComponent {
   @Input() filtro: Type<any>;
   @Input() margem: string;
   @Input() elevacao: number;
+  @Input() search: boolean = true;
 
   @ViewChild(MatDrawerContainer, { read: ElementRef })
   matDrawerContainer: ElementRef;

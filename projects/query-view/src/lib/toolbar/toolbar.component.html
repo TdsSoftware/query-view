@@ -5,8 +5,14 @@
    </div>
 
    <div class="default" fxFlex>
-      <div fxLayout>
-         <tds-search fxFlex [placeholder]="titulo"></tds-search>
+      <div fxLayout fxLayoutAlign="start center">
+         <ng-container *ngIf="search; else tituloTemplate">
+            <tds-search fxFlex [placeholder]="titulo"></tds-search>
+         </ng-container>
+
+         <ng-template #tituloTemplate>
+            <span id="titulo" fxFlex> {{ titulo }} </span>
+         </ng-template>
 
          <ng-content select="[tds-toolbar-buttons]"></ng-content>
 
