@@ -1,5 +1,5 @@
 import { Component, Input, Type, ViewChild, ElementRef } from '@angular/core';
-import { MatDrawerContainer, MatDrawerMode } from '@angular/material/sidenav';
+import { MatDrawerContainer } from '@angular/material/sidenav';
 
 import { QueryViewService } from '../query-view.service';
 import { FilterService } from '../filter/filter.service';
@@ -8,6 +8,7 @@ import { FilterService } from '../filter/filter.service';
   selector: 'tds-query-view',
   templateUrl: './query-view.component.html',
   styleUrls: ['./query-view.component.scss'],
+  providers: [FilterService],
 })
 export class QueryViewComponent {
   @Input() titulo: string = '';
@@ -23,19 +24,12 @@ export class QueryViewComponent {
   loading$ = this.queryViewService.loading$;
   filter$ = this.filterService.filter$;
 
-  mode: MatDrawerMode = 'side';
+  minWidth: string = '300px';
 
   constructor(
     private queryViewService: QueryViewService,
     private filterService: FilterService
   ) {}
-
-  ngDoCheck() {
-    this.mode =
-      this.matDrawerContainer?.nativeElement.clientWidth < 960
-        ? 'over'
-        : 'side';
-  }
 
   getElevation() {
     return this.margem ? `mat-elevation-z${this.elevacao}` : null;

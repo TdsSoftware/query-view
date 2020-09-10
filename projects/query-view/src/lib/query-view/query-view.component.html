@@ -1,9 +1,11 @@
 <mat-drawer-container (backdropClick)="close()">
-    <mat-drawer *ngIf="filtro" [mode]="mode" [opened]="filter$ | async" position="end" disableClose>
+    <mat-drawer *ngIf="filtro" mode="side" [opened]="filter$ | async" position="end" disableClose
+        [style.min-width]="minWidth">
         <tds-filter [filter]="filtro"></tds-filter>
     </mat-drawer>
 
     <mat-drawer-content>
+
 
         <tds-toolbar [style.margin]="margem" [titulo]="titulo" [ngClass]="getElevation()" [filter]="filtro != null"
             [search]="search">
