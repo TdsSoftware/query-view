@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FilterService {
   private filter = new BehaviorSubject(false);
   filter$ = this.filter.asObservable();
