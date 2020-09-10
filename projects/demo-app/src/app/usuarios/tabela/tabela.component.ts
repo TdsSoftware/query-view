@@ -14,6 +14,7 @@ export class TabelaComponent implements OnInit {
   @Input() usuarios: Usuario[];
   @Input() registros: number;
   @Output() ordenacao = new EventEmitter<Ordenacao>();
+  @Output() selecao = new EventEmitter<Usuario[]>();
 
   displayedColumns = ['select', 'id', 'avatar', 'username', 'email'];
 

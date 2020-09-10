@@ -1,1 +1,19 @@
-<tds-query-view [tabela]="table" titulo="Usuários"></tds-query-view>
+<tds-query-view [tabela]="table" titulo="Usuários">
+
+    <ng-container *ngIf="hasSelection" tds-toolbar-selection>
+        <button mat-icon-button matTooltip="Bloquear" (click)="bloquear()">
+            <mat-icon>lock</mat-icon>
+        </button>
+
+        <button mat-icon-button matTooltip="Desbloquear" (click)="desbloquear()">
+            <mat-icon>lock_open</mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-container tds-toolbar-buttons>
+        <button mat-icon-button matTooltip="Adicionar" (click)="onAddClick()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
+
+</tds-query-view>

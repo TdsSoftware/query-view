@@ -4,7 +4,15 @@
     </mat-drawer>
 
     <mat-drawer-content>
+
         <tds-toolbar [style.margin]="margem" [titulo]="titulo" [ngClass]="getElevation()" [filter]="filtro != null">
+            <ng-container tds-toolbar-selection>
+                <ng-content select="[tds-toolbar-selection]"></ng-content>
+            </ng-container>
+
+            <ng-container tds-toolbar-buttons>
+                <ng-content select="[tds-toolbar-buttons]"></ng-content>
+            </ng-container>
         </tds-toolbar>
 
         <mat-divider *ngIf="!margem"></mat-divider>

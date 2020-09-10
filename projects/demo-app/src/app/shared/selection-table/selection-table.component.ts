@@ -12,7 +12,8 @@ import {
   MatColumnDef,
   MatTable,
 } from '@angular/material/table';
-import { SelectionModel } from '@angular/cdk/collections';
+
+import { SelectionTableService } from './selection-table.service';
 
 @Component({
   selector: 'app-selection-table',
@@ -29,7 +30,11 @@ export class SelectionTableComponent<T> implements AfterContentInit {
   @ContentChildren(MatRowDef) rowDefs: QueryList<MatRowDef<T>>;
   @ContentChildren(MatColumnDef) columnDefs: QueryList<MatColumnDef>;
 
-  selection = new SelectionModel<T>(true, []);
+  get selection() {
+    return this.selectionService.selection;
+  }
+
+  constructor(private selectionService: SelectionTableService<T>) {}
 
   ngAfterContentInit() {
     this.columnDefs.forEach((columnDef) => this.table.addColumnDef(columnDef));
