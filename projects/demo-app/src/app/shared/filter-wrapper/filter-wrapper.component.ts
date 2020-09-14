@@ -1,15 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FilterService, QueryViewService } from 'query-view';
+
 import { Subscription } from 'rxjs';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
   styleUrls: ['./filter-wrapper.component.scss'],
 })
-export class FilterWrapperComponent implements OnInit {
+export class FilterWrapperComponent implements OnInit, OnDestroy {
   @Input() form: FormGroup;
   @Input() titulo: string = 'Filtros';
   @Input() fnSubmit: (values: any) => any;
@@ -24,6 +26,13 @@ export class FilterWrapperComponent implements OnInit {
 
   ngOnInit(): void {
     this.inicial = this.form.value;
+
+    const changes$ = this.form.valueChanges.pipe(
+      switchMap(() => this.filtro.fullscreen$),
+      filter((fs) => !Boolean(fs))
+    );
+
+    this.subscription.add(changes$.subscribe(() => this.submit()));
   }
 
   ngOnDestroy() {

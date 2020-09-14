@@ -23,7 +23,7 @@
 
     <div fxFlex></div>
 
-    <button mat-button color="primary" (click)="submit()">
+    <button *ngIf="filtro.fullscreen$ | async" mat-button color="primary" (click)="submit()">
         Filtrar
     </button>
 </div>

@@ -7,6 +7,9 @@ export class FilterService {
   private filter = new BehaviorSubject(false);
   filter$ = this.filter.asObservable();
 
+  private fullscreen = new BehaviorSubject(false);
+  fullscreen$ = this.fullscreen.asObservable();
+
   constructor() {}
 
   abrir() {
@@ -19,5 +22,9 @@ export class FilterService {
 
   alternar() {
     this.filter.next(!this.filter.value);
+  }
+
+  setFullscreen(value: boolean) {
+    this.fullscreen.next(value);
   }
 }
