@@ -26,6 +26,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
+        <!-- TODO: https://github.com/angular/components/issues/20560 -->
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" [attr.colspan]="displayedColumns.length + 1"> Nenhum usuário localizado </td>
         </tr>
