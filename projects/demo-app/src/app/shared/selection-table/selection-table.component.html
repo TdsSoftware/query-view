@@ -15,5 +15,10 @@
         </td>
     </ng-container>
 
+    <!-- TODO: https://github.com/angular/components/issues/20560 -->
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="columns.length"> Nenhum registro localizado </td>
+    </tr>
+
     <ng-content></ng-content>
 </table>
