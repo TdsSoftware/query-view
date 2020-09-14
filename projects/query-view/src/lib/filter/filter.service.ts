@@ -7,8 +7,8 @@ export class FilterService {
   private filter = new BehaviorSubject(false);
   filter$ = this.filter.asObservable();
 
-  private fullscreen = new BehaviorSubject(false);
-  fullscreen$ = this.fullscreen.asObservable();
+  private fullscreenSource = new BehaviorSubject(false);
+  fullscreen$ = this.fullscreenSource.asObservable();
 
   constructor() {}
 
@@ -25,6 +25,10 @@ export class FilterService {
   }
 
   setFullscreen(value: boolean) {
-    this.fullscreen.next(value);
+    this.fullscreenSource.next(value);
+  }
+
+  get fullscreen() {
+    return this.fullscreenSource.value;
   }
 }

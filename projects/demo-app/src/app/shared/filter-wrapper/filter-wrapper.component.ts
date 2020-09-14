@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { FilterService, QueryViewService } from 'query-view';
 
 import { Subscription } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { debounceTime, filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filter-wrapper',
@@ -28,6 +28,7 @@ export class FilterWrapperComponent implements OnInit, OnDestroy {
     this.inicial = this.form.value;
 
     const changes$ = this.form.valueChanges.pipe(
+      debounceTime(400),
       switchMap(() => this.filtro.fullscreen$),
       filter((fs) => !Boolean(fs))
     );
@@ -43,7 +44,10 @@ export class FilterWrapperComponent implements OnInit, OnDestroy {
     const values = this.fnSubmit
       ? this.fnSubmit(this.form.value)
       : this.form.value;
+
     this.queryViewService.filtrar(values);
+
+    if (this.filtro.fullscreen) this.filtro.fechar();
   }
 
   reset() {

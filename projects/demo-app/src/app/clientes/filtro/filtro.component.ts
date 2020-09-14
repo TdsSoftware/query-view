@@ -4,8 +4,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { QueryViewService } from 'query-view';
-
 import { ClientesService } from '../clientes.service';
 
 @Component({
@@ -32,12 +30,7 @@ export class FiltroComponent implements OnInit {
     moeda: this.moeda,
   });
 
-  inicial = this.form.value;
-
-  constructor(
-    private queryViewService: QueryViewService,
-    private clienteService: ClientesService
-  ) {}
+  constructor(private clienteService: ClientesService) {}
 
   ngOnInit(): void {
     this.departamentos$ = this.departamento.valueChanges.pipe(
@@ -53,32 +46,27 @@ export class FiltroComponent implements OnInit {
     );
   }
 
-  submit() {
+  transform(formValue: any) {
     const filter: { [key: string]: any } = {};
 
-    if (this.departamento.value) {
-      filter.departamento = this.departamento.value;
+    if (formValue.departamento) {
+      filter.departamento = formValue.departamento;
     }
 
-    if (this.pais.value) {
-      filter.pais = this.pais.value;
+    if (formValue.pais) {
+      filter.pais = formValue.pais;
     }
 
-    if (this.moeda.value) {
-      filter.moeda = this.moeda.value;
+    if (formValue.moeda) {
+      filter.moeda = formValue.moeda;
     }
 
-    this.queryViewService.filtrar(filter);
+    return filter;
   }
 
   filterList(list: string[], value: string): string[] {
     return list.filter(
       (option) => option.toLowerCase().indexOf(value.toLowerCase()) === 0
     );
-  }
-
-  reset() {
-    this.form.setValue(this.inicial);
-    this.submit();
   }
 }
