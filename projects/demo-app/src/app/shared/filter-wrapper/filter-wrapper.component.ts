@@ -29,8 +29,7 @@ export class FilterWrapperComponent implements OnInit, OnDestroy {
 
     const changes$ = this.form.valueChanges.pipe(
       debounceTime(400),
-      switchMap(() => this.filtro.fullscreen$),
-      filter((fs) => !Boolean(fs))
+      filter(() => this.filtro.fullscreen === false)
     );
 
     this.subscription.add(changes$.subscribe(() => this.submit()));
@@ -41,6 +40,8 @@ export class FilterWrapperComponent implements OnInit, OnDestroy {
   }
 
   submit() {
+    console.log('submit');
+
     const values = this.fnSubmit
       ? this.fnSubmit(this.form.value)
       : this.form.value;
