@@ -1,43 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { Subscription } from 'rxjs';
-import { QueryViewService } from 'query-view';
-
 @Component({
   selector: 'app-filtro',
   templateUrl: './filtro.component.html',
   styleUrls: ['./filtro.component.scss'],
 })
 export class FiltroComponent implements OnInit {
-  idadeMax = new FormControl(60);
-  form = new FormGroup({ idadeMax: this.idadeMax });
-  initial = this.form.value;
-  subscription = new Subscription();
+  form = new FormGroup({ idadeMax: new FormControl(60) });
 
-  constructor(private queryViewService: QueryViewService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.subscription.add(
-      this.form.valueChanges.subscribe((values) => this.submit(values))
-    );
-  }
+  ngOnInit() {}
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  reiniciar() {
-    this.form.reset(this.initial);
-  }
-
-  submit(values: any) {
+  transform(formValue: any) {
     const filter: any = {};
 
-    if (values.idadeMax != 60) {
-      filter.idadeMax = values.idadeMax;
+    if (formValue.idadeMax != 60) {
+      filter.idadeMax = formValue.idadeMax;
     }
 
-    this.queryViewService.filtrar(Object.keys(filter).length ? filter : null);
+    return Object.keys(filter).length ? filter : null;
   }
 }

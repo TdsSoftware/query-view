@@ -14,6 +14,8 @@ import { FiltroComponent } from '../filtro/filtro.component';
 export class QueryViewComponent implements OnInit {
   table = TabelaQueryViewComponent;
   filter = FiltroComponent;
+
   constructor() {}
+
   ngOnInit() {}
 }

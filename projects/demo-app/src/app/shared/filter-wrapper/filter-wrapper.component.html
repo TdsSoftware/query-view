@@ -1,0 +1,29 @@
+<mat-toolbar fxLayout>
+    <span>{{ titulo }}</span>
+
+    <div fxFlex></div>
+
+    <button mat-icon-button matTooltip="Fechar" (click)="filtro.fechar()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-divider></mat-divider>
+
+<div id="form-container">
+    <ng-content></ng-content>
+</div>
+
+<mat-divider></mat-divider>
+
+<div id="button-container">
+    <button mat-button (click)="reset()">
+        Reiniciar
+    </button>
+
+    <div fxFlex></div>
+
+    <button mat-button color="primary" (click)="submit()">
+        Filtrar
+    </button>
+</div>

@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#form-container {
+  flex: 1;
+  padding: 24px;
+}
+
+#button-container {
+  padding: 8px;
+}
