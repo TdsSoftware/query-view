@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
   }
 
   clear() {
-    this.pesquisa.setValue(null);
+    this.pesquisa.setValue(null, { emitEvent: false });
     this.queryViewService.pesquisar(null);
   }
 }
