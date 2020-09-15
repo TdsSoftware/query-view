@@ -25,7 +25,10 @@ export class FilterService {
   }
 
   setFullscreen(value: boolean) {
+    const atual = this.fullscreen;
     this.fullscreenSource.next(value);
+
+    if (atual === false && value) this.fechar();
   }
 
   get fullscreen() {
