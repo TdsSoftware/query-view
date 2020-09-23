@@ -18,7 +18,11 @@ export class QueryViewComponent implements OnInit {
   constructor(private selectionService: SelectionTableService<Usuario>) {}
 
   get hasSelection() {
-    return this.selectionService.selection.selected.length > 0;
+    return this.selection > 0;
+  }
+
+  get selection() {
+    return this.selectionService.selection.selected.length;
   }
 
   ngOnInit(): void {}

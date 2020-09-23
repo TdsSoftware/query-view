@@ -1,7 +1,17 @@
 <tds-query-view [tabela]="table" titulo="Usuários" elevacao="1" margem="2em">
 
     <ng-container *ngIf="hasSelection" tds-toolbar-selection>
-        <app-botoes-selecao></app-botoes-selecao>
+        <div fxLayout fxLayoutGap="8px" fxLayoutAlign="start center">
+
+            <app-botoes-selecao></app-botoes-selecao>
+
+            <div fxFlex></div>
+
+            <span class="selection-text">
+                {{ selection }} {{ selection === 1 ? 'selecionado' : 'selecionados' }}
+            </span>
+
+        </div>
     </ng-container>
 
     <ng-container tds-toolbar-buttons>

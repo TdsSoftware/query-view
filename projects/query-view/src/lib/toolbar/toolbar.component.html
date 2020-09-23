@@ -1,10 +1,10 @@
-<mat-toolbar>
+<mat-toolbar fxLayout>
 
    <div class="wrapper">
       <ng-content select="[tds-toolbar-selection]"></ng-content>
    </div>
 
-   <div class="default" fxFlex>
+   <div class="default">
       <div fxLayout fxLayoutAlign="start center">
          <ng-container *ngIf="search; else tituloTemplate">
             <tds-search fxFlex [placeholder]="titulo"></tds-search>
