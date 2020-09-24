@@ -19,7 +19,11 @@ export class SearchComponent implements OnInit {
   pesquisa = new FormControl();
   subscriptions = new Subscription();
 
-  constructor(private queryViewService: QueryViewService) {}
+  constructor(private queryViewService: QueryViewService) {
+    this.queryViewService.parametros$.subscribe((param) =>
+      console.log('service', param)
+    );
+  }
 
   ngOnInit(): void {
     this.listenToSearch();
@@ -42,7 +46,6 @@ export class SearchComponent implements OnInit {
   }
 
   clear() {
-    this.pesquisa.setValue(null, { emitEvent: false });
-    this.queryViewService.pesquisar(null);
+    this.pesquisa.setValue(null);
   }
 }
