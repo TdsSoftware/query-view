@@ -86,16 +86,7 @@ export class FuncionariosService {
 
     return of(filteredData).pipe(
       delay(this.getRandomNumber(500, 1500)),
-      switchMap((next) =>
-        this.getRandomNumber(1, 2) === 1
-          ? throwError(
-              new HttpErrorResponse({
-                statusText: 'Simulação que algum erro ocorreu no backend',
-                error: 404,
-              })
-            )
-          : of(next)
-      ),
+      switchMap((f) => this.getRetornoSimulacaoRequisicao(f)),
       map((data: any[]) => data.slice(start, end)),
       map(
         (dados) =>
@@ -106,5 +97,30 @@ export class FuncionariosService {
 
   private getRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  private getRetornoSimulacaoRequisicao(
+    funcionarios: Funcionario[]
+  ): Observable<Funcionario[]> {
+    const randomInt = this.getRandomNumber(1, 6);
+
+    switch (randomInt) {
+      case 1:
+        return throwError(new Error('Simulação - new Error()'));
+
+      case 2:
+        return throwError('Simulação - throwError(string)');
+
+      case 3:
+        return throwError(
+          new HttpErrorResponse({ statusText: 'Simulação - Erro no backend' })
+        );
+
+      case 4:
+        throw throwError('Simulação - throw throwError');
+
+      default:
+        return of(funcionarios);
+    }
   }
 }

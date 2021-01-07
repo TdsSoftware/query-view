@@ -47,7 +47,7 @@
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" [attr.colspan]="colunas.length + 1">
         <span *ngIf="erro; else semRegistro" class="color-warn">
-          {{ erro }}
+          {{ erro | displayError }}
         </span>
 
         <ng-template #semRegistro> Nenhum funcionário localizado </ng-template>

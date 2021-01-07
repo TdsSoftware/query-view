@@ -1,5 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
-
 export interface Parametros {
   paginacao?: Partial<Paginacao>;
   filtro?: Filtro;
@@ -24,5 +22,5 @@ export interface Paginacao {
 export interface Data<T> {
   dados: T[];
   registros: number;
-  erro?: HttpErrorResponse;
+  erro?: any;
 }

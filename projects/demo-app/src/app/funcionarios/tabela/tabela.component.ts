@@ -15,7 +15,7 @@ export class TabelaComponent implements OnInit {
   @Input() funcionarios: Funcionario[] = [];
   @Input() registros = 0;
   @Input() pageSize = 10;
-  @Input() erro?: string;
+  @Input() erro?: any;
   @Output() paginacao = new EventEmitter<Paginacao>();
   @Output() ordenacao = new EventEmitter<Ordenacao>();
 
