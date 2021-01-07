@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { of, Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { of, Observable, throwError } from 'rxjs';
+import { delay, map, switchMap } from 'rxjs/operators';
 
 import { Parametros, Data } from 'query-view';
 
 import { Funcionario } from './funcionarios';
 import { FUNCIONARIOS_MOCK_DATA } from './funcionarios-mock-data';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -85,6 +86,16 @@ export class FuncionariosService {
 
     return of(filteredData).pipe(
       delay(this.getRandomNumber(500, 1500)),
+      switchMap((next) =>
+        this.getRandomNumber(1, 3) === 1
+          ? throwError(
+              new HttpErrorResponse({
+                statusText: 'Simulação que algum erro ocorreu no backend',
+                error: 404,
+              })
+            )
+          : of(next)
+      ),
       map((data: any[]) => data.slice(start, end)),
       map(
         (dados) =>

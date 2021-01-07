@@ -11,6 +11,9 @@
 @import "projects/query-view/scss/_tds-query-view.theme";
 @import "projects/query-view/scss/_tds-query-view.typography";
 
+// Custom Classes
+@import "./app-custom-classes";
+
 // Custom Themes
 @import "../themes/candy-app-theme.scss";
 @include default-app-theme();

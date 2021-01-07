@@ -15,4 +15,6 @@
 
   @include tds-query-view-theme($theme);
   @include tds-query-view-typography($typography);
+
+  @include app-custom-classes($theme);
 }

@@ -1,7 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, switchMap, startWith } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { tap, switchMap, startWith, catchError } from 'rxjs/operators';
 
 import { Parametros, Data, Paginacao, Ordenacao, Filtro } from './query-view';
 
@@ -17,7 +18,13 @@ export class QueryViewService {
   dataSource$<T>(fnLoad: (param: Parametros) => Observable<Data<T>>) {
     return this.parametros$.pipe(
       tap(() => this.loading.next(true)),
-      switchMap((parametros) => fnLoad(parametros)),
+      switchMap((parametros) =>
+        fnLoad(parametros).pipe(
+          catchError((erro: HttpErrorResponse) =>
+            of({ dados: [], registros: 0, erro })
+          )
+        )
+      ),
       tap(() => this.loading.next(false)),
       startWith({ dados: null, registros: 0 })
     );
