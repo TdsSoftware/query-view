@@ -87,7 +87,7 @@ export class FuncionariosService {
     return of(filteredData).pipe(
       delay(this.getRandomNumber(500, 1500)),
       switchMap((next) =>
-        this.getRandomNumber(1, 3) === 1
+        this.getRandomNumber(1, 2) === 1
           ? throwError(
               new HttpErrorResponse({
                 statusText: 'Simulação que algum erro ocorreu no backend',
