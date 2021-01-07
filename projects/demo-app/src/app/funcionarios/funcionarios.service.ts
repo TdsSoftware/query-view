@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { of, Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { of, Observable, throwError } from 'rxjs';
+import { delay, map, switchMap } from 'rxjs/operators';
 
 import { Parametros, Data } from 'query-view';
 
 import { Funcionario } from './funcionarios';
 import { FUNCIONARIOS_MOCK_DATA } from './funcionarios-mock-data';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -85,6 +86,7 @@ export class FuncionariosService {
 
     return of(filteredData).pipe(
       delay(this.getRandomNumber(500, 1500)),
+      switchMap((f) => this.getRetornoSimulacaoRequisicao(f)),
       map((data: any[]) => data.slice(start, end)),
       map(
         (dados) =>
@@ -95,5 +97,30 @@ export class FuncionariosService {
 
   private getRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  private getRetornoSimulacaoRequisicao(
+    funcionarios: Funcionario[]
+  ): Observable<Funcionario[]> {
+    const randomInt = this.getRandomNumber(1, 6);
+
+    switch (randomInt) {
+      case 1:
+        return throwError(new Error('Simulação - new Error()'));
+
+      case 2:
+        return throwError('Simulação - throwError(string)');
+
+      case 3:
+        return throwError(
+          new HttpErrorResponse({ statusText: 'Simulação - Erro no backend' })
+        );
+
+      case 4:
+        throw throwError('Simulação - throw throwError');
+
+      default:
+        return of(funcionarios);
+    }
   }
 }

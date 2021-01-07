@@ -1,0 +1,7 @@
+@mixin app-custom-classes($theme) {
+  $warn: map-get($theme, warn);
+
+  .color-warn {
+    color: mat-color($warn);
+  }
+}
