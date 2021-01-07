@@ -14,6 +14,6 @@ export class DisplayErrorPipe implements PipeTransform {
       return error;
     }
 
-    return 'Ocorreu um erro ao carregar os dados';
+    return 'Ocorreu um erro ao carregar os registros';
   }
 }
