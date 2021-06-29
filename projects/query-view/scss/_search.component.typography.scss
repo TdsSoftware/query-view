@@ -1,7 +1,8 @@
+@use '~@angular/material' as mat;
 @mixin tds-search-typography($typography) {
   tds-search {
     input {
-      @include mat-typography-level-to-styles($typography, title);
+      @include mat.typography-level($typography, title);
     }
   }
 }

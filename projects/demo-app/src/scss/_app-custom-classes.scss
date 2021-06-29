@@ -1,7 +1,8 @@
+@use '~@angular/material' as mat;
 @mixin app-custom-classes($theme) {
   $warn: map-get($theme, warn);
 
   .color-warn {
-    color: mat-color($warn);
+    color: mat.get-color-from-palette($warn);
   }
 }

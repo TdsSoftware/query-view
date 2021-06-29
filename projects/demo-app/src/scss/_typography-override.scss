@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @function typography-override() {
-  @return mat-typography-config($title: mat-typography-level(20px, 32px, 400));
+  @return mat.define-typography-config($title: mat.define-typography-level(20px, 32px, 400));
 }

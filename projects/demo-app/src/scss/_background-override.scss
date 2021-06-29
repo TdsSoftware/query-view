@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @function background-override($theme) {
   $background: map-get($theme, background);
 
   $new-background: map_merge(
     $background,
     (
-      background: map_get($mat-grey, 100),
+      background: map_get(mat.$grey-palette, 100),
     )
   );
 

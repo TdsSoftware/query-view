@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @mixin tds-search-theme($theme) {
   $foreground: map-get($theme, foreground);
 
   tds-search {
     input {
       background: transparent;
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     ::placeholder {
